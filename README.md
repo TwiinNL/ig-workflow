@@ -36,6 +36,8 @@ Requires Java, Node (SUSHI) and Jekyll. The template is set in `ig.ini`, not in 
 
 `.github/workflows/build.yml` runs on pull requests and pushes to `main`: SUSHI, download of IG Publisher 3.0.0 (pinned), build, upload of `output/` (including `qa.html`) as artifact `ig-output`.
 
+The runner is pinned to `ubuntu-24.04` (not `ubuntu-latest`), so a change of the GitHub-hosted image does not alter the build unnoticed. Moving to a newer Ubuntu gets its own PR.
+
 The build fails on every publisher error that is not listed in [known-errors.txt](known-errors.txt) (see [known-issues.md](known-issues.md)). The publisher exits with 0 on a build whose `qa.html` lists errors, so the exit code cannot be used. Warnings and hints do not fail the build. Errors cannot be suppressed via `input/ignoreWarnings.txt`.
 
 `.github/scripts/check-qa.py` reads the individual errors from `output/qa.xml`, a FHIR Bundle of OperationOutcomes written by the publisher. Each error becomes one line `<location>: <message>`, with the issue's `expression` as location (file name if there is none), and must match a line in `known-errors.txt` exactly. As a cross-check the number of errors in `qa.xml` must equal `errs` in `output/qa.json`.
