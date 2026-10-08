@@ -1,7 +1,7 @@
 CodeSystem: TAWorkflowCS
 Id: ta-workflow
 Title: "TA Workflow Codes"
-Description: "Codes used by TA Workflow."
+Description: "Codes defined by TA Workflow for Task.code, Task.businessStatus and Task.input.type of the Coordination Task."
 * ^status = #draft
 * ^experimental = false
 * ^content = #complete
