@@ -1,0 +1,23 @@
+id: nl.twiin.fhir.r4.workflow
+canonical: https://fhir.twiin.nl/ig/workflow
+name: TwiinWorkflow
+title: Twiin Workflow
+description: Technical specification of TA Workflow, part of the technical core of the Twiin Afsprakenstelsel.
+status: draft
+version: 0.1.0
+fhirVersion: 4.0.1
+publisher:
+  name: Twiin
+license: CC-BY-SA-4.0
+copyrightYear: 2026+
+copyright: Copyright 2026 Twiin. Licensed under CC BY-SA 4.0.
+language: en
+releaseLabel: ci-build
+
+pages:
+  index.md:
+    title: Home
+
+menu:
+  Home: index.html
+  Artifacts: artifacts.html
