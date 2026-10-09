@@ -56,7 +56,7 @@ Neither file's layout is documented as far as verified; both were inspected with
 test/validate-invalid.sh path/to/validator_cli.jar
 ```
 
-The script validates each file against `output/package.tgz` and fails if the validator does not report the invariant named in the file name. It is not run in CI.
+The script validates each file against `output/package.tgz` and fails if the validator does not report the invariant named in the file name. A file that violates something other than an invariant has a `<name>.expect` next to it with a text the reported issue must contain. It is not run in CI.
 
 ## License
 

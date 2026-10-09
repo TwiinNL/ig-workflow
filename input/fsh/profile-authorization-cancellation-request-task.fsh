@@ -2,7 +2,7 @@ Profile: TwiinAuthorizationCancellationRequestTask
 Parent: Task
 Id: twiin-authorization-cancellation-request-task
 Title: "Twiin Authorization Cancellation Request Task"
-Description: "Authorization Cancellation Request Task under TA Workflow, used by a Fulfiller to ask the Placer to withdraw the Request itself (TA sections Preliminary description of the profiles → Authorization Cancellation Request Task; Cancellation by the Fulfiller). COW IG defines no profile for this Task. requester identifies the HealthcareService of the Fulfiller by identifier only: FHIR R4 does not allow HealthcareService as a target of Task.requester."
+Description: "Authorization Cancellation Request Task under TA Workflow, used by a Fulfiller to ask the Placer to withdraw the Request itself (TA sections Preliminary description of the profiles → Authorization Cancellation Request Task; Cancellation by the Fulfiller). COW IG defines no profile for this Task. requester and owner identify the Fulfiller and the Placer as organizations, by their URA."
 * ^status = #draft
 * ^experimental = false
 * obeys twiin-acrt-1 and twiin-task-1
@@ -13,8 +13,8 @@ Description: "Authorization Cancellation Request Task under TA Workflow, used by
 * focus only Reference(TwiinWorkflowServiceRequest)
 * requester 1..1
 * requester.identifier 1..1
-* requester.identifier only $nl-gf-custodianassignedidentifier
-* requester.identifier obeys twiin-aid-1
+* requester.identifier.system 1..1
+* requester.identifier.system = $ura
 * owner 1..1
 * owner.identifier 1..1
 * owner.identifier.system 1..1

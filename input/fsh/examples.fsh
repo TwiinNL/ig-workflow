@@ -145,14 +145,15 @@ Instance: 9c4a1f8e-7d3b-4e2a-b6f9-3a8e5d2c7b14
 InstanceOf: TwiinAuthorizationCancellationRequestTask
 Usage: #example
 Title: "Authorization Cancellation Request Task"
-Description: "A Fulfiller asks the Placer to withdraw the Request (TA section Cancellation by the Fulfiller). requester identifies the HealthcareService of the Fulfiller, owner the Placer by its URA."
+Description: "A Fulfiller asks the Placer to withdraw the Request (TA section Cancellation by the Fulfiller). requester identifies the Fulfiller and owner the Placer, each by its URA."
 * status = #requested
 * statusReason.text = "Contraindication found for the requested service"
 * intent = #proposal
 * code = $task-code#abort
 * focus = Reference(ServiceRequest/0b7c5d0e-6f3a-4c2b-9e1d-8a4f2c6b3d75)
 * authoredOn = "2026-10-12T14:00:00+02:00"
-* insert AssignedId(requester.identifier, https://fulfiller-a.example.org/healthcareservice, wondzorg-thuis, 87654321)
+* requester.identifier.system = $ura
+* requester.identifier.value = "87654321"
 * owner.identifier.system = $ura
 * owner.identifier.value = "12345678"
 
