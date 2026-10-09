@@ -1,0 +1,39 @@
+{
+  "resourceType": "Subscription",
+  "id": "twiin-wsub-1",
+  "meta": {
+    "profile": [
+      "https://fhir.twiin.nl/ig/workflow/StructureDefinition/twiin-workflow-subscription"
+    ]
+  },
+  "channel": {
+    "type": "rest-hook",
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-heartbeat-period",
+        "valueUnsignedInt": 3600
+      }
+    ],
+    "endpoint": "https://fulfiller-a.example.org/fhir/notifications",
+    "payload": "application/fhir+json",
+    "_payload": {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-payload-content",
+          "valueCode": "id-only"
+        }
+      ]
+    }
+  },
+  "status": "active",
+  "reason": "Coordination Tasks for HealthcareService wondzorg-thuis",
+  "criteria": "https://example.org/fhir/SubscriptionTopic/transfer-of-care",
+  "_criteria": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-filter-criteria",
+        "valueString": "owner=https://fulfiller-a.example.org/healthcareservice|wondzorg-thuis"
+      }
+    ]
+  }
+}

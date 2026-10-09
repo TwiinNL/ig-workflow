@@ -7,7 +7,7 @@ FHIR R4 implementation guide for the technical specification of TA Workflow, par
 - FHIR version: 4.0.1
 - Version: 0.1.0 (draft)
 - Publisher: Twiin
-- Dependencies: none
+- Dependencies: `hl7.fhir.uv.cow#1.0.0-ballot`, `nl.generiekefuncties.csd#1.0.0`, `nl.twiin.fhir.r4.notifications#0.1.0-draft`, and, because SUSHI needs them, `hl7.fhir.eu.base#2.0.0` and `hl7.fhir.uv.subscriptions-backport.r4#1.1.0` (see [known-issues.md](known-issues.md))
 
 Built with [SUSHI](https://fshschool.org/docs/sushi/) and the HL7 IG Publisher.
 
@@ -24,6 +24,7 @@ Built with [SUSHI](https://fshschool.org/docs/sushi/) and the HL7 IG Publisher.
 ## Build
 
 ```sh
+.github/scripts/install-packages.sh   # packages not on the registry, checksum-verified
 ./_updatePublisher.sh   # download/update the IG Publisher
 sushi build .
 ./_genonce.sh -no-sushi # output in output/ (see output/qa.html)
@@ -46,6 +47,16 @@ The build fails on every publisher error that is not listed in [known-errors.txt
 The step "Test language redirect" runs `node test/lang-redirects.test.js` after the build: it checks that the redirect script in `output/` is our override of the template file and that browsers with language `nl`, `nl-NL`, `de`, `en` and `en-US` are all sent to `en/<page>`, with query string and fragment kept. The override (`input/images/assets/js/lang-redirects.js`) is a source file of the IG, so every build from this repository applies it, including the build for publication with `-go-publish`; that build has not been run for this change, so check `output/assets/js/lang-redirects.js` (and the copy in `output/en/`) before publishing. See [known-issues.md](known-issues.md).
 
 Neither file's layout is documented as far as verified; both were inspected with IG Publisher 3.0.0, which is why the CI pins that version (`PUBLISHER_VERSION` in the workflow). On every publisher update, re-check that `qa.xml` and `qa.txt` together still list the same errors as `qa.html`. Entries in `known-errors.txt` that no longer occur are reported as a notice.
+
+## Invalid examples
+
+`test/invalid/` holds one instance per invariant (and per profile where an invariant is shared), each violating only that invariant. After a build:
+
+```sh
+test/validate-invalid.sh path/to/validator_cli.jar
+```
+
+The script validates each file against `output/package.tgz` and fails if the validator does not report the invariant named in the file name. A file that violates something other than an invariant has a `<name>.expect` next to it with a text the reported issue must contain. It is not run in CI.
 
 ## License
 
