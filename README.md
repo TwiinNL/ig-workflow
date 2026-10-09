@@ -48,6 +48,16 @@ The step "Test language redirect" runs `node test/lang-redirects.test.js` after 
 
 Neither file's layout is documented as far as verified; both were inspected with IG Publisher 3.0.0, which is why the CI pins that version (`PUBLISHER_VERSION` in the workflow). On every publisher update, re-check that `qa.xml` and `qa.txt` together still list the same errors as `qa.html`. Entries in `known-errors.txt` that no longer occur are reported as a notice.
 
+## Invalid examples
+
+`test/invalid/` holds one instance per invariant (and per profile where an invariant is shared), each violating only that invariant. After a build:
+
+```sh
+test/validate-invalid.sh path/to/validator_cli.jar
+```
+
+The script validates each file against `output/package.tgz` and fails if the validator does not report the invariant named in the file name. It is not run in CI.
+
 ## License
 
 - IG content (everything in `input/`, including FSH): CC BY-SA 4.0 (SPDX: `CC-BY-SA-4.0`), see [LICENSE](LICENSE).

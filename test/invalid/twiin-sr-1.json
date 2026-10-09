@@ -1,0 +1,32 @@
+{
+  "resourceType": "ServiceRequest",
+  "id": "twiin-sr-1",
+  "meta": {
+    "profile": [
+      "https://fhir.twiin.nl/ig/workflow/StructureDefinition/twiin-workflow-servicerequest"
+    ]
+  },
+  "status": "active",
+  "intent": "order",
+  "instantiatesCanonical": [
+    "https://example.org/fhir/ActivityDefinition/transfer-of-care"
+  ],
+  "code": {
+    "coding": [
+      {
+        "code": "308292007",
+        "system": "http://snomed.info/sct"
+      }
+    ]
+  },
+  "subject": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+        "valueCode": "masked"
+      }
+    ],
+    "reference": "Patient/3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90"
+  },
+  "authoredOn": "2026-10-09T08:55:00+02:00"
+}

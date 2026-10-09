@@ -1,0 +1,107 @@
+{
+  "resourceType": "Task",
+  "id": "twiin-ct-2",
+  "meta": {
+    "profile": [
+      "https://fhir.twiin.nl/ig/workflow/StructureDefinition/twiin-coordination-task"
+    ]
+  },
+  "intent": "order",
+  "owner": {
+    "type": "HealthcareService",
+    "identifier": {
+      "use": "official",
+      "system": "https://fulfiller-a.example.org/healthcareservice",
+      "value": "wondzorg-thuis",
+      "assigner": {
+        "identifier": {
+          "type": {
+            "coding": [
+              {
+                "code": "custodian",
+                "system": "http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+              }
+            ]
+          },
+          "system": "urn:oid:2.16.528.1.1007.3.3",
+          "value": "87654321"
+        }
+      }
+    }
+  },
+  "input": [
+    {
+      "type": {
+        "coding": [
+          {
+            "code": "type-of-work",
+            "system": "https://fhir.twiin.nl/ig/workflow/CodeSystem/ta-workflow"
+          }
+        ]
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "code": "308292007",
+            "system": "http://snomed.info/sct"
+          }
+        ]
+      }
+    }
+  ],
+  "requester": {
+    "identifier": {
+      "system": "http://fhir.nl/fhir/NamingSystem/ura",
+      "value": "12345678"
+    }
+  },
+  "location": {
+    "identifier": {
+      "use": "official",
+      "system": "https://fulfiller-a.example.org/location",
+      "value": "vestiging-centrum",
+      "assigner": {
+        "identifier": {
+          "type": {
+            "coding": [
+              {
+                "code": "custodian",
+                "system": "http://terminology.hl7.org/CodeSystem/provenance-participant-type"
+              }
+            ]
+          },
+          "system": "urn:oid:2.16.528.1.1007.3.3",
+          "value": "87654321"
+        }
+      }
+    }
+  },
+  "identifier": [
+    {
+      "system": "https://placer.example.org/task",
+      "value": "6d2e9f41-8b3c-4a7d-b5e2-1c9f7a3d8e64"
+    }
+  ],
+  "status": "rejected",
+  "code": {
+    "coding": [
+      {
+        "code": "request-fulfillment",
+        "system": "https://fhir.twiin.nl/ig/workflow/CodeSystem/ta-workflow"
+      }
+    ]
+  },
+  "focus": {
+    "reference": "ServiceRequest/0b7c5d0e-6f3a-4c2b-9e1d-8a4f2c6b3d75"
+  },
+  "authoredOn": "2026-10-09T09:00:00+02:00",
+  "statusReason": {
+    "coding": [
+      {
+        "system": "https://fhir.twiin.nl/ig/workflow/CodeSystem/ta-workflow",
+        "code": "not-selected"
+      }
+    ],
+    "text": "not selected"
+  }
+}
