@@ -7,7 +7,7 @@ FHIR R4 implementation guide for the technical specification of TA Workflow, par
 - FHIR version: 4.0.1
 - Version: 0.1.0 (draft)
 - Publisher: Twiin
-- Dependencies: none
+- Dependencies: `hl7.fhir.uv.cow#1.0.0-ballot`, `nl.generiekefuncties.csd#1.0.0`, `nl.twiin.fhir.r4.notifications#0.1.0-draft`, and, because SUSHI needs them, `hl7.fhir.eu.base#2.0.0` and `hl7.fhir.uv.subscriptions-backport.r4#1.1.0` (see [known-issues.md](known-issues.md))
 
 Built with [SUSHI](https://fshschool.org/docs/sushi/) and the HL7 IG Publisher.
 
@@ -24,6 +24,7 @@ Built with [SUSHI](https://fshschool.org/docs/sushi/) and the HL7 IG Publisher.
 ## Build
 
 ```sh
+.github/scripts/install-packages.sh   # packages not on the registry, checksum-verified
 ./_updatePublisher.sh   # download/update the IG Publisher
 sushi build .
 ./_genonce.sh -no-sushi # output in output/ (see output/qa.html)
