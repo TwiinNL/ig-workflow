@@ -14,10 +14,28 @@ copyright: Copyright 2026 Twiin. Licensed under CC BY-SA 4.0.
 language: en
 releaseLabel: ci-build
 
+dependencies:
+  hl7.fhir.uv.cow: 1.0.0-ballot
+  nl.generiekefuncties.csd: 1.0.0
+  # Dependency of nl.generiekefuncties.csd; NL-GF-Location is based on its location-eu-core.
+  # Listed so that SUSHI, which does not load transitive dependencies, resolves that profile.
+  hl7.fhir.eu.base: 2.0.0
+  nl.twiin.fhir.r4.notifications: 0.1.0-draft
+  # Same version as in nl.twiin.fhir.r4.notifications and hl7.fhir.uv.cow. Listed because
+  # twiin-workflow-subscription constrains its extensions and SUSHI does not load
+  # transitive dependencies.
+  hl7.fhir.uv.subscriptions-backport.r4: 1.1.0
+
 pages:
   index.md:
     title: Home
+  artifacts-overview.md:
+    title: Artifacts overview
+  requirements-not-in-artifacts.md:
+    title: Requirements not expressed in artifacts
 
 menu:
   Home: index.html
+  Overview: artifacts-overview.html
+  Not in artifacts: requirements-not-in-artifacts.html
   Artifacts: artifacts.html

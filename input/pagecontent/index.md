@@ -1,6 +1,6 @@
 This implementation guide is the technical specification of TA Workflow, part of the technical core of the Twiin Afsprakenstelsel.
 
-The profiles and the CapabilityStatement follow in a later version of this implementation guide. This version contains the code system and value set for the Coordination Task.
+This guide contains the conformance artifacts of TA Workflow: the profiles of the Coordination Task, the Cancellation Request Task, the Authorization Cancellation Request Task, the ServiceRequest and the Subscription, the code system and value set of the TA, and the CapabilityStatement of the Placer's server. The requirements themselves are in the TA; the pages of this guide are informative. See [Artifacts overview](artifacts-overview.html) and [Requirements not expressed in artifacts](requirements-not-in-artifacts.html).
 
 ### Status of this version
 

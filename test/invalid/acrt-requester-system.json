@@ -1,0 +1,38 @@
+{
+  "resourceType": "Task",
+  "id": "acrt-requester-system",
+  "meta": {
+    "profile": [
+      "https://fhir.twiin.nl/ig/workflow/StructureDefinition/twiin-authorization-cancellation-request-task"
+    ]
+  },
+  "intent": "proposal",
+  "code": {
+    "coding": [
+      {
+        "code": "abort",
+        "system": "http://hl7.org/fhir/CodeSystem/task-code"
+      }
+    ]
+  },
+  "requester": {
+    "identifier": {
+      "system": "http://kvk.nl",
+      "value": "12345678"
+    }
+  },
+  "owner": {
+    "identifier": {
+      "system": "http://fhir.nl/fhir/NamingSystem/ura",
+      "value": "12345678"
+    }
+  },
+  "status": "requested",
+  "statusReason": {
+    "text": "Contraindication found for the requested service"
+  },
+  "focus": {
+    "reference": "ServiceRequest/0b7c5d0e-6f3a-4c2b-9e1d-8a4f2c6b3d75"
+  },
+  "authoredOn": "2026-10-12T14:00:00+02:00"
+}

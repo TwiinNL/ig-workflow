@@ -33,6 +33,12 @@ jobs:
       - name: Install SUSHI
         run: npm install -g fsh-sushi
 
+      # nl.generiekefuncties.csd and nl.twiin.fhir.r4.notifications are not on the FHIR
+      # package registry. The script downloads them, checks the pinned sha-256 (fails on a
+      # mismatch) and puts them in the package cache. See known-issues.md.
+      - name: Install packages not on the registry
+        run: .github/scripts/install-packages.sh
+
       - name: Run SUSHI
         run: sushi build .
 
@@ -44,6 +50,16 @@ jobs:
           mkdir -p input-cache
           curl -sSfL -o input-cache/publisher.jar \
             "https://github.com/HL7/fhir-ig-publisher/releases/download/${PUBLISHER_VERSION}/publisher.jar"
+
+      # The published package has an empty .index.json, so the publisher finds none of
+      # its resources. Without the index file, the publisher rebuilds it. The package comes in
+      # through hl7.fhir.uv.cow and nl.twiin.fhir.r4.notifications. See known-issues.md.
+      - name: Work around empty index of Backport package
+        run: |
+          dir="$HOME/.fhir/packages/hl7.fhir.uv.subscriptions-backport.r4#1.1.0"
+          mkdir -p "$dir"
+          curl -sSfL "https://packages.fhir.org/hl7.fhir.uv.subscriptions-backport.r4/1.1.0" | tar xz -C "$dir"
+          rm "$dir/package/.index.json"
 
       - name: Build IG
         run: java -jar input-cache/publisher.jar -ig . -no-sushi
@@ -71,3 +87,18 @@ jobs:
       # in known-errors.txt.
       - name: Fail on unknown errors in QA report
         run: python3 .github/scripts/check-qa.py
+
+      # Every instance in test/invalid/ must be reported with the invariant in its file name, or
+      # with the text in its .expect file. Validator pinned to 7.0.1, the org.hl7.fhir.core
+      # version inside IG Publisher 3.0.0; update both together.
+      - name: Download validator
+        env:
+          VALIDATOR_VERSION: 7.0.1
+          VALIDATOR_SHA256: 1178b6a3a3fe98d9cd9545cadee505274967332466001d857e4d8bed7138a5bc
+        run: |
+          curl -sSfL -o input-cache/validator_cli.jar \
+            "https://github.com/hapifhir/org.hl7.fhir.core/releases/download/${VALIDATOR_VERSION}/validator_cli.jar"
+          echo "${VALIDATOR_SHA256}  input-cache/validator_cli.jar" | shasum -a 256 -c -
+
+      - name: Validate invalid examples
+        run: test/validate-invalid.sh input-cache/validator_cli.jar
