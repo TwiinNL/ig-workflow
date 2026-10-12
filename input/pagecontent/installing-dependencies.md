@@ -3,7 +3,7 @@ Two dependencies of this implementation guide are not on the FHIR package regist
 | Package | URL | sha-256 |
 |---|---|---|
 | `nl.generiekefuncties.csd#1.0.0` | https://minvws.github.io/generiekefuncties-docs/package.tgz | `847ea68d0ba5df6c0c2faa6a939d23f49e167401e338752d1ef72a3cf509c849` |
-| `nl.twiin.fhir.r4.notifications#0.1.0-draft` | https://fhir.twiin.nl/ig/notifications/0.1.0-draft/package.tgz | `bcf5baf254979caba62508179ec46739aca488adbbbfafae96f90def6a7b192c` |
+| `nl.twiin.fhir.r4.notifications#0.1.1-draft` | https://fhir.twiin.nl/ig/notifications/0.1.1-draft/package.tgz | `cec58f60184740ec51994b44c5ae4ddc42b870576ff20cfc831f9a47a183f2fd` |
 
 These are the URLs and checksums used in the CI of this guide. The URL of `nl.generiekefuncties.csd` has no version: it serves the package that was last built, so the checksum only matches the package this guide was built against.
 
@@ -18,11 +18,23 @@ mkdir -p ~/.fhir/packages/<id>#<version>
 tar xzf package.tgz -C ~/.fhir/packages/<id>#<version>
 ```
 
-For example, for `nl.twiin.fhir.r4.notifications#0.1.0-draft` the result is `~/.fhir/packages/nl.twiin.fhir.r4.notifications#0.1.0-draft/package/package.json`. Do not continue when the checksum differs.
+For example, for `nl.twiin.fhir.r4.notifications#0.1.1-draft` the result is `~/.fhir/packages/nl.twiin.fhir.r4.notifications#0.1.1-draft/package/package.json`. Do not continue when the checksum differs.
 
 SUSHI, the IG Publisher and the validator find the packages in the cache without further configuration, as long as the version in the dependency of the guide equals the folder name.
 
 The source repository of this guide has a script that does this, including the checksum check: `.github/scripts/install-packages.sh`.
+
+### Dependencies of this guide
+
+{% include dependency-table.xhtml %}
+
+### IP statements
+
+{% include ip-statements.xhtml %}
+
+### Global profiles
+
+{% include globals-table.xhtml %}
 
 ### Source
 
