@@ -21,3 +21,19 @@ Description: "Codes for Task.code of the Coordination Task under TA Workflow."
 * ^experimental = false
 * http://hl7.org/fhir/CodeSystem/task-code#fulfill
 * TAWorkflowCS#request-fulfillment
+
+ValueSet: TAWorkflowStatusReasonVS
+Id: ta-workflow-status-reason
+Title: "TA Workflow Status Reason"
+Description: "Codes for Task.statusReason of the Coordination Task under TA Workflow. Extensible: a use case or a Fulfiller MAY use other reasons, for instance when it rejects a Task; not-selected is reserved for the Placer."
+* ^status = #draft
+* ^experimental = false
+* TAWorkflowCS#not-selected
+
+ValueSet: TAWorkflowBusinessStatusVS
+Id: ta-workflow-business-status
+Title: "TA Workflow Business Status"
+Description: "Codes for Task.businessStatus of the Coordination Task under TA Workflow. Extensible: a use case MAY define further values; selected is set by the Placer only."
+* ^status = #draft
+* ^experimental = false
+* TAWorkflowCS#selected

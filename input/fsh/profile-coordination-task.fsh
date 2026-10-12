@@ -8,6 +8,8 @@ Description: "Coordination Task under TA Workflow (TA sections Preliminary descr
 * obeys twiin-ct-1 and twiin-ct-2 and twiin-ct-3 and twiin-ct-4 and twiin-ct-5 and twiin-task-1
 * intent = #order
 * code from TAWorkflowTaskCodeVS (required)
+* statusReason from TAWorkflowStatusReasonVS (extensible)
+* businessStatus from TAWorkflowBusinessStatusVS (extensible)
 * focus only Reference(TwiinWorkflowServiceRequest)
 * for.identifier obeys twiin-ct-6
 * authoredOn 1..1
