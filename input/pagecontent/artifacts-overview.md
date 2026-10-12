@@ -12,7 +12,7 @@ This page is informative. It lists the artifacts in this guide and the section o
 
 Task.owner and Task.location refer to NL-GF-HealthcareService and NL-GF-Location of GF Addressing (`nl.generiekefuncties.csd` 1.0.0). Their identifier has the type `nl-gf-custodianassignedidentifier`, the profile of the AssignedId slice in those profiles. The invariant `twiin-aid-1` excludes an assigner identified by a KvK number; the URA system of the assigner is the one GF Addressing prescribes and is not fixed in this guide.
 
-COW IG defines no profile for the Authorization Cancellation Request Task. Its requester is the Fulfiller as an organization, identified by its URA, as its owner is the Placer. The TA describes the requester as the HealthcareService of the Fulfiller; FHIR R4 does not allow HealthcareService as a target of Task.requester, so this guide uses the organization instead.
+COW IG defines no profile for the Authorization Cancellation Request Task. Its requester is the Fulfiller as an organization, identified by its URA, as its owner is the Placer: FHIR R4 does not allow Task.requester to refer to a HealthcareService (TA section Preliminary description of the profiles → Authorization Cancellation Request Task).
 
 Some constraints interpret the TA:
 
