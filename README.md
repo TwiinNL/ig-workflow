@@ -62,6 +62,16 @@ The step "Test language redirect" runs `node test/lang-redirects.test.js` after 
 
 Neither file's layout is documented as far as verified; both were inspected with IG Publisher 3.0.0, which is why the CI pins that version (`PUBLISHER_VERSION` in the workflow). On every publisher update, re-check that `qa.xml` and `qa.txt` together still list the same errors as `qa.html`. Entries in `known-errors.txt` that no longer occur are reported as a notice.
 
+### Package lock file
+
+`.github/fhir-packages.lock` lists every package (`<id>#<version>`, sorted, one per line) that a build leaves in `~/.fhir/packages`. The last step, "Check package set against lock file" (`.github/scripts/check-package-set.sh`), fails when that set differs from the file, in either direction, and prints the diff. The file is also part of the key of the package cache, so a restored cache holds exactly the locked set.
+
+If the build fails on that step:
+
+1. Read the diff in the log. A package that moved (a floating dependency such as `latest`), a changed dependency in `sushi-config.yaml` or a new transitive package each show up as a changed line. Decide whether the change is intended; if not, pin the dependency instead of updating the lock.
+2. If it is intended: replace the contents of `.github/fhir-packages.lock` with the list printed under "Packages in ~/.fhir/packages:" in the same log (only the package lines, not the header), and commit it with the change that caused it.
+3. The new lock file gives a new cache key, so the next run downloads the packages once and saves them.
+
 ## Invalid examples
 
 `test/invalid/` holds one instance per invariant (and per profile where an invariant is shared), each violating only that invariant. After a build:
@@ -70,7 +80,7 @@ Neither file's layout is documented as far as verified; both were inspected with
 test/validate-invalid.sh path/to/validator_cli.jar
 ```
 
-The script validates each file against `output/package.tgz` and fails if the validator does not report the invariant named in the file name. A file that violates something other than an invariant has a `<name>.expect` next to it with a text the reported issue must contain. CI runs it after the build (step "Validate invalid examples") with validator_cli.jar 7.0.1, the core version of IG Publisher 3.0.0, and fails if an instance is not reported as expected.
+The script validates all files in one validator run (so the JVM and the package load once) against `output/package.tgz` and fails if the validator does not report the invariant named in the file name. A file that violates something other than an invariant has a `<name>.expect` next to it with a text the reported issue must contain. CI runs it after the build (step "Validate invalid examples") with validator_cli.jar 7.0.1, the core version of IG Publisher 3.0.0, and fails if an instance is not reported as expected.
 
 ## License
 
