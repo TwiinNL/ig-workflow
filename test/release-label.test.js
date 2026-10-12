@@ -7,7 +7,7 @@ const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
 
-const LABEL = "ci-build"; // releaseLabel in sushi-config.yaml
+const LABEL = "Draft – normative only when referenced by the Twiin afsprakenstelsel"; // releaseLabel in sushi-config.yaml
 const OVERRIDE = "input/includes/fragment-pagebegin.html";
 const TEMPLATE_ORIGINAL = "template/includes/fragment-pagebegin.html";
 // SHA-256 of the file in fhir2.base.template#0.1.0, the version the override is copied from.
