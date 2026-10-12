@@ -3,3 +3,7 @@
 # See known-issues.md before adding anything here.
 ImplementationGuide/nl.twiin.fhir.r4.workflow: This IG is version 4.0.1, while the IG 'hl7.fhir.uv.subscriptions-backport.r4' is from version 4.0.0
 ImplementationGuide/nl.twiin.fhir.r4.workflow: This IG is for FHIR version 4.0.1, while the package 'hl7.fhir.uv.subscriptions-backport.r4#1.1.0' is for FHIR version 4.0.0
+# Publication Request of main: 0.1.0-draft is already published, so the publisher rejects this request. Remove these three lines when publication-request.json moves to the next version.
+Publication Request: Version 0.1.0-draft has already been published
+Publication Request: This is not the first publication, so first must not be true
+Publication Request: Publication Request is for version v0.1.0-draft which is already published
