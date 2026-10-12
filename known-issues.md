@@ -1,5 +1,13 @@
 # Known issues
 
+## Milestone publication fails in IG Publisher 3.0.0
+
+Applies to: IG Publisher 3.0.0, `-go-publish` with `mode: milestone` (or `technical-correction`). Same issue as in ig-notifications.
+
+After both publication builds succeed, the run stops with `java.lang.Error: The folder <temp>/ig-builds/<package>#<version>-milestone/output is not inside the website root folder <temp>/web-root/run-<date>` (`IGReleaseRedirectionBuilder.java:158`, called from `PublicationProcess.java:748`). Observed for ig-notifications in a trial run on 2026-10-09; not reproduced for this IG.
+
+Fixed upstream in [HL7/fhir-ig-publisher d64c08c](https://github.com/HL7/fhir-ig-publisher/commit/d64c08c) ("Fix publication crash when building redirects for the milestone build output", 8 October 2026), not yet in a release. This is why version 0.1.0-draft is published with `mode: working`. Publish milestone `0.1.0` with the same content once a publisher release contains the fix, and pin that version in CI.
+
 ## Packages not on the FHIR package registry
 
 Applies to: `nl.generiekefuncties.csd#1.0.0` and `nl.twiin.fhir.r4.notifications#0.1.0-draft`.

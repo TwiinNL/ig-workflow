@@ -1,0 +1,17 @@
+{
+  "package-id": "nl.twiin.fhir.r4.workflow",
+  "version": "0.1.0-draft",
+  "mode": "working",
+  "status": "draft",
+  "sequence": "Release 1",
+  "path": "https://fhir.twiin.nl/ig/workflow/0.1.0-draft",
+  "desc": "First draft publication, technical specification of TA Workflow 0.3",
+  "first": true,
+  "title": "Twiin Workflow",
+  "category": "Infrastructure",
+  "introduction": "Technical specification of TA Workflow, part of the technical core of the Twiin Afsprakenstelsel.",
+  "ci-build": "https://github.com/TwiinNL/ig-workflow",
+  "registry-description": "Technical specification of TA Workflow, part of the technical core of the Twiin Afsprakenstelsel.",
+  "registry-country": "nl",
+  "registry-authority": "Twiin"
+}
