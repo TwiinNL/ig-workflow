@@ -24,6 +24,18 @@ SUSHI, the IG Publisher and the validator find the packages in the cache without
 
 The source repository of this guide has a script that does this, including the checksum check: `.github/scripts/install-packages.sh`.
 
+### Dependencies of this guide
+
+{% include dependency-table.xhtml %}
+
+### IP statements
+
+{% include ip-statements.xhtml %}
+
+### Global profiles
+
+{% include globals-table.xhtml %}
+
 ### Source
 
 - Location of the cache: [FHIR Package Loader](https://github.com/FHIR/fhir-package-loader#packageloader-implementations) (used by SUSHI): "the standard FHIR cache is used for local storage of unzipped packages (`$USER_HOME/.fhir/packages`)"; for the IG Publisher and validator, `FilesystemPackageCacheManager` in [hapifhir/org.hl7.fhir.core](https://github.com/hapifhir/org.hl7.fhir.core) (`user.home`, `.fhir`, `packages`; folder `<id>#<version>`). The specification only says that tools may use a common local cache ([FHIR packages, FHIR Package Caching](https://build.fhir.org/packages.html)).

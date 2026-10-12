@@ -50,3 +50,7 @@ Applies to: `twiin.base.template#0.1.1` (based on `fhir2.base.template#0.1.0`) w
 
 - `searchform.html` has its own markup that the publisher reports as not well formed: 8 warnings for `output/searchform.html` and 8 for `output/en/searchform.html` (16 in total, not allowlisted, warnings do not fail the build).
 - Profile history pages are not in the page list of the publisher, so their breadcrumb bar is empty and the heading has no section number.
+
+## HTML fragment `cross-version-analysis` is not included anywhere
+
+Applies to: IG Publisher 3.0.0, base template `fhir2.base.template#0.1.0`. The publisher always generates `cross-version-analysis` and `cross-version-analysis-inline` and warns ("An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere"). Not relevant for this IG: it targets one FHIR version (4.0.1), so there is no cross-version analysis to show. Not allowlisted; warnings do not fail the build.
