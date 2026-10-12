@@ -8,7 +8,7 @@ This page is informative. It lists the artifacts in this guide and the section o
 | [Twiin Cancellation Request Task](StructureDefinition-twiin-cancellation-request-task.html) | `cancellation-request-task` (COW IG 1.0.0-ballot) | Preliminary description of the profiles → Cancellation Request Task; Cancellation Request Task |
 | [Twiin Authorization Cancellation Request Task](StructureDefinition-twiin-authorization-cancellation-request-task.html) | `Task` (FHIR R4) | Preliminary description of the profiles → Authorization Cancellation Request Task; Cancellation by the Fulfiller |
 | [Twiin Workflow ServiceRequest](StructureDefinition-twiin-workflow-servicerequest.html) | `ServiceRequest` (FHIR R4) | Preliminary description of the profiles → ServiceRequest; Request; Patient context and readability |
-| [Twiin Workflow Subscription](StructureDefinition-twiin-workflow-subscription.html) | `twiin-subscription` (Twiin Notifications 0.1.0-draft) | Subscription |
+| [Twiin Workflow Subscription](StructureDefinition-twiin-workflow-subscription.html) | `twiin-subscription` (Twiin Notifications 0.1.1-draft) | Subscription |
 
 Task.owner and Task.location refer to NL-GF-HealthcareService and NL-GF-Location of GF Addressing (`nl.generiekefuncties.csd` 1.0.0). Their identifier has the type `nl-gf-custodianassignedidentifier`, the profile of the AssignedId slice in those profiles. The invariant `twiin-aid-1` excludes an assigner identified by a KvK number; the URA system of the assigner is the one GF Addressing prescribes and is not fixed in this guide.
 

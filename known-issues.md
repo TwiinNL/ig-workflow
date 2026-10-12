@@ -10,14 +10,14 @@ Fixed upstream in [HL7/fhir-ig-publisher d64c08c](https://github.com/HL7/fhir-ig
 
 ## Packages not on the FHIR package registry
 
-Applies to: `nl.generiekefuncties.csd#1.0.0` and `nl.twiin.fhir.r4.notifications#0.1.0-draft`.
+Applies to: `nl.generiekefuncties.csd#1.0.0` and `nl.twiin.fhir.r4.notifications#0.1.1-draft`.
 
 Neither package is on packages.fhir.org, so SUSHI and the publisher cannot download them. `.github/scripts/install-packages.sh` downloads each tarball, checks its pinned sha-256 and puts it in `~/.fhir/packages`; it fails on a download error or a different checksum. CI runs it before SUSHI (step "Install packages not on the registry"); run it once for a local build.
 
 | Package | URL | sha-256 |
 |---|---|---|
 | `nl.generiekefuncties.csd#1.0.0` | https://minvws.github.io/generiekefuncties-docs/package.tgz | `847ea68d0ba5df6c0c2faa6a939d23f49e167401e338752d1ef72a3cf509c849` (determined 2026-10-09) |
-| `nl.twiin.fhir.r4.notifications#0.1.0-draft` | https://fhir.twiin.nl/ig/notifications/0.1.0-draft/package.tgz | `bcf5baf254979caba62508179ec46739aca488adbbbfafae96f90def6a7b192c` |
+| `nl.twiin.fhir.r4.notifications#0.1.1-draft` | https://fhir.twiin.nl/ig/notifications/0.1.1-draft/package.tgz | `cec58f60184740ec51994b44c5ae4ddc42b870576ff20cfc831f9a47a183f2fd` |
 
 The URL of `nl.generiekefuncties.csd` has no version: it serves whatever the publisher of GF Addressing last built. When that changes, the checksum fails and the build stops. Then check the new package and update the version and the checksum together.
 

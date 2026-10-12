@@ -30,6 +30,6 @@ install nl.generiekefuncties.csd 1.0.0 \
   https://minvws.github.io/generiekefuncties-docs/package.tgz \
   847ea68d0ba5df6c0c2faa6a939d23f49e167401e338752d1ef72a3cf509c849
 
-install nl.twiin.fhir.r4.notifications 0.1.0-draft \
-  https://fhir.twiin.nl/ig/notifications/0.1.0-draft/package.tgz \
-  bcf5baf254979caba62508179ec46739aca488adbbbfafae96f90def6a7b192c
+install nl.twiin.fhir.r4.notifications 0.1.1-draft \
+  https://fhir.twiin.nl/ig/notifications/0.1.1-draft/package.tgz \
+  cec58f60184740ec51994b44c5ae4ddc42b870576ff20cfc831f9a47a183f2fd
