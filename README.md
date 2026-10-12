@@ -56,7 +56,7 @@ Neither file's layout is documented as far as verified; both were inspected with
 test/validate-invalid.sh path/to/validator_cli.jar
 ```
 
-The script validates each file against `output/package.tgz` and fails if the validator does not report the invariant named in the file name. A file that violates something other than an invariant has a `<name>.expect` next to it with a text the reported issue must contain. It is not run in CI.
+The script validates each file against `output/package.tgz` and fails if the validator does not report the invariant named in the file name. A file that violates something other than an invariant has a `<name>.expect` next to it with a text the reported issue must contain. CI runs it after the build (step "Validate invalid examples") with validator_cli.jar 7.0.1, the core version of IG Publisher 3.0.0, and fails if an instance is not reported as expected.
 
 ## License
 
