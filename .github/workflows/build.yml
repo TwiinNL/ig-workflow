@@ -111,6 +111,12 @@ jobs:
       - name: Work around empty index of Backport package
         run: .github/scripts/install-backport.sh
 
+      # Not in the package cache of the registry: the template is the asset of a release of
+      # TwiinNL/ig-template. Always installed from a fresh download with its sha-256 checked, so
+      # a restored cache entry is replaced, not trusted.
+      - name: Install twiin.base.template
+        run: .github/scripts/install-template.sh
+
       - name: Build IG
         run: java -jar input-cache/publisher.jar -ig . -no-sushi
 
@@ -122,13 +128,11 @@ jobs:
           path: output/
           if-no-files-found: warn
 
-      # The template's lang-redirects.js is overridden by input/images/assets/js/; fail if the
-      # override did not take effect or the redirect does not work. See known-issues.md.
+      # The redirect script comes from twiin.base.template; fail if the redirect does not work.
       - name: Test language redirect
         run: node test/lang-redirects.test.js
 
-      # The template's fragment-pagebegin.html is overridden by input/includes/ to show the release
-      # label; fail if the label is missing or the template file changed. See known-issues.md.
+      # The header comes from twiin.base.template; fail if the release label is missing.
       - name: Test release label
         run: node test/release-label.test.js
 
