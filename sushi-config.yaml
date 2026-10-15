@@ -22,6 +22,9 @@ dependencies:
   # transitive dependencies.
   hl7.fhir.uv.subscriptions-backport.r4: 1.1.0
 
+parameters:
+  pin-canonicals: pin-multiples
+
 pages:
   index.md:
     title: Home
