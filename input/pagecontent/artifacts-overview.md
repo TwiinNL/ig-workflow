@@ -18,7 +18,7 @@ Some constraints interpret the TA:
 
 - Task.code of the Authorization Cancellation Request Task ("fixed to abort") and Task.input.type are expressed as patterns, as COW IG does for the Cancellation Request Task.
 - The entries with type `supplemental-resource` and `supplemental-query` on the Coordination Task are optional slices that fix the value type (TA section Sharing additional content).
-- `twiin-wsub-1` checks the form `owner:identifier=<system>|<value>` of the filter; it cannot check that the identifier is that of a HealthcareService.
+- `twiin-wsub-1` checks the form `owner:identifier=[system]|[value]` of the filter; it cannot check that the identifier is that of a HealthcareService.
 - `twiin-task-1` (statusReason.text when statusReason is populated) applies to all three Task profiles, as in the three tables of the TA.
 
 ### Invariants
@@ -36,7 +36,7 @@ Some constraints interpret the TA:
 | `twiin-task-1` | warning | all Task profiles | statusReason.text when statusReason is populated |
 | `twiin-aid-1` | error | Coordination Task, Cancellation Request Task | The assigner of the identifier of a HealthcareService or Location is not a KvK number |
 | `twiin-sr-1` | error | ServiceRequest | subject is not masked with data-absent-reason |
-| `twiin-wsub-1` | error | Subscription | Filter of the form `owner:identifier=<system>|<value>` |
+| `twiin-wsub-1` | error | Subscription | Filter of the form `owner:identifier=[system]|[value]` |
 
 ### Terminology
 

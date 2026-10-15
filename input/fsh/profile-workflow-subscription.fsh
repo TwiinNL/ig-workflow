@@ -2,7 +2,7 @@ Profile: TwiinWorkflowSubscription
 Parent: $twiin-subscription
 Id: twiin-workflow-subscription
 Title: "Twiin Workflow Subscription"
-Description: "Subscription under TA Workflow, on top of the Twiin Subscription of TA Notifications (TA sections Summary of the profiles → Subscription; Subscription). The payload mode is id-only, the filter is `owner:identifier=<system>|<value>`, and a heartbeat period is required."
+Description: "Subscription under TA Workflow, on top of the Twiin Subscription of TA Notifications (TA sections Summary of the profiles → Subscription; Subscription). The payload mode is id-only, the filter is `owner:identifier=[system]|[value]`, and a heartbeat period is required."
 * ^status = #draft
 * ^experimental = false
 * criteria.extension[filterCriteria] 1..1
