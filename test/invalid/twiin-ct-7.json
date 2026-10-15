@@ -1,6 +1,6 @@
 {
   "resourceType": "Task",
-  "id": "twiin-ct-4",
+  "id": "twiin-ct-7",
   "meta": {
     "profile": [
       "https://fhir.twiin.nl/ig/workflow/StructureDefinition/twiin-coordination-task"
@@ -47,6 +47,30 @@
           }
         ]
       }
+    },
+    {
+      "type": {
+        "coding": [
+          {
+            "code": "supplemental-resource",
+            "system": "https://fhir.twiin.nl/ig/workflow/CodeSystem/ta-workflow"
+          }
+        ]
+      },
+      "valueReference": {
+        "reference": "Patient/3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90"
+      }
+    },
+    {
+      "type": {
+        "coding": [
+          {
+            "code": "supplemental-query",
+            "system": "https://fhir.twiin.nl/ig/workflow/CodeSystem/ta-workflow"
+          }
+        ]
+      },
+      "valueString": "Observation?patient=3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90&code=http://loinc.org|8302-2"
     }
   ],
   "requester": {
@@ -79,10 +103,10 @@
   "identifier": [
     {
       "system": "https://placer.example.org/task",
-      "value": "6d2e9f41-8b3c-4a7d-b5e2-1c9f7a3d8e64"
+      "value": "e2f7a9c1-4d6b-4b8e-9a3f-6c1d5e8b2a47"
     }
   ],
-  "status": "requested",
+  "status": "in-progress",
   "code": {
     "coding": [
       {
@@ -91,11 +115,14 @@
       }
     ]
   },
+  "for": {
+    "reference": "Patient/3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90"
+  },
   "focus": {
     "reference": "ServiceRequest/0b7c5d0e-6f3a-4c2b-9e1d-8a4f2c6b3d75"
   },
   "authoredOn": "2026-10-09T09:00:00+02:00",
-  "for": {
-    "reference": "Patient/3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90"
+  "executionPeriod": {
+    "start": "2026-10-12T08:00:00+02:00"
   }
 }

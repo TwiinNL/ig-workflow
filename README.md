@@ -5,7 +5,7 @@ FHIR R4 implementation guide for the technical specification of TA Workflow, par
 - Package id: `nl.twiin.fhir.r4.workflow`
 - Canonical: https://fhir.twiin.nl/ig/workflow
 - FHIR version: 4.0.1
-- Version: 0.1.1-draft (working release, see [Release 0.1.1-draft](#release-011-draft))
+- Version: 0.2.0-draft (working release, see [Release 0.2.0-draft](#release-020-draft))
 - Publisher: Twiin
 - Dependencies: `hl7.fhir.uv.cow#1.0.0-ballot`, `nl.twiin.fhir.r4.notifications#0.1.1-draft`, and, because SUSHI needs it, `hl7.fhir.uv.subscriptions-backport.r4#1.1.0` (see [known-issues.md](known-issues.md))
 
@@ -17,11 +17,11 @@ Built with [SUSHI](https://fshschool.org/docs/sushi/) and the HL7 IG Publisher.
 - Once this IG depends on the Subscriptions R5 Backport IG (`hl7.fhir.uv.subscriptions-backport.r4`), the version must equal the one in `nl.twiin.fhir.r4.notifications`, as long as this IG does not depend on Notifications.
 - Add a dependency only when an artifact refers to that package.
 
-## Release 0.1.1-draft
+## Release 0.2.0-draft
 
-The second publication is the working release `0.1.1-draft` (`mode: working` in `publication-request.json`, `first: false`), not a milestone. The reason is the same as for the first publication, `0.1.0-draft`: IG Publisher 3.0.0 crashes on a milestone publication: `IGReleaseRedirectionBuilder` requires its folder to be inside the website root, but `-go-publish` passes the milestone build output, which is outside it. Fixed upstream in [HL7/fhir-ig-publisher d64c08c](https://github.com/HL7/fhir-ig-publisher/commit/d64c08c) (8 October 2026), not yet in a release. See [known-issues.md](known-issues.md).
+The publication of `0.2.0-draft` is a working release (`mode: working` in `publication-request.json`, `first: false`), not a milestone. The reason is the same as for the earlier draft publications: IG Publisher 3.0.0 crashes on a milestone publication: `IGReleaseRedirectionBuilder` requires its folder to be inside the website root, but `-go-publish` passes the milestone build output, which is outside it. Fixed upstream in [HL7/fhir-ig-publisher d64c08c](https://github.com/HL7/fhir-ig-publisher/commit/d64c08c) (8 October 2026), not yet in a release. See [known-issues.md](known-issues.md).
 
-Consequence of a working release: only `https://fhir.twiin.nl/ig/workflow/0.1.1-draft/` holds the IG; the root of the canonical holds no copy and no redirects, and no version is marked current. `0.1.0-draft` was removed from the site after `0.1.1-draft` was published ([TwiinNL/fhir#9](https://github.com/TwiinNL/fhir/pull/9)); the git tag `v0.1.0-draft` remains. Milestone `0.1.1`, with the same content, follows once a publisher release contains the fix.
+Consequence of a working release: only `https://fhir.twiin.nl/ig/workflow/0.2.0-draft/` holds the IG; the root of the canonical holds no copy and no redirects, and no version is marked current. Milestone `0.2.0`, with the same content, follows once a publisher release contains the fix.
 
 The IG refers to "TA Workflow 0.3 (draft)" in `index.md` and this README, without a link.
 
