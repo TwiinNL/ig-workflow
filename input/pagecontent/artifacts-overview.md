@@ -28,9 +28,9 @@ Some constraints interpret the TA:
 | `twiin-ct-1` | error | Coordination Task | The statuses draft, ready and on-hold are not used |
 | `twiin-ct-2` | error | Coordination Task | statusReason not-selected only when the status is cancelled |
 | `twiin-ct-3` | error | Coordination Task | businessStatus selected implies code fulfill and for populated |
-| `twiin-ct-4` | error | Coordination Task | code request-fulfillment implies for empty |
 | `twiin-ct-5` | warning | Coordination Task | statusReason when the status is rejected or cancelled |
-| `twiin-ct-6` | warning | Coordination Task | for.identifier does not carry the BSN |
+| `twiin-ct-6` | warning | Coordination Task | for.identifier is not populated |
+| `twiin-ct-7` | error | Coordination Task | status in-progress or completed implies code fulfill |
 | `twiin-crt-1` | error | Cancellation Request Task | status requested, accepted, rejected, cancelled or entered-in-error |
 | `twiin-acrt-1` | error | Authorization Cancellation Request Task | status requested, accepted or rejected |
 | `twiin-task-1` | warning | all Task profiles | statusReason.text when statusReason is populated |

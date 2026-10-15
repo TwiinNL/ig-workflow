@@ -31,6 +31,6 @@ Expression: "assigner.identifier.where(system = 'http://kvk.nl').empty()"
 Severity: #error
 
 Invariant: twiin-task-1
-Description: "When statusReason is populated, statusReason.text SHOULD be populated."
+Description: "When statusReason is populated, statusReason.text SHOULD be populated (TA section Summary of the profiles)."
 Expression: "statusReason.exists() implies statusReason.text.exists()"
 Severity: #warning

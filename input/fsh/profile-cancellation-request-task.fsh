@@ -12,6 +12,6 @@ Description: "Cancellation Request Task under TA Workflow, used by the Placer to
 * insert TypeOfWorkInput
 
 Invariant: twiin-crt-1
-Description: "The status is requested, accepted, rejected, cancelled or entered-in-error."
+Description: "The status is requested, accepted, rejected, cancelled or entered-in-error (TA section Cancellation Request Task)."
 Expression: "status = 'requested' or status = 'accepted' or status = 'rejected' or status = 'cancelled' or status = 'entered-in-error'"
 Severity: #error

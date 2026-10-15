@@ -16,6 +16,7 @@ This page is informative. Many requirements of TA Workflow concern behaviour, ac
 | ServiceRequest.code carries the code of the ActivityDefinition to which ServiceRequest.instantiatesCanonical refers, where that ActivityDefinition has a code | Request |
 | Read access to the Request and the Patient before and after selection | Patient context and readability |
 | No information that identifies the patient before selection | Patient context and readability; Sharing additional content |
+| Task.for is empty while Task.code is request-fulfillment, unless the use case identifies the patient to candidates before selection | Patient context and readability |
 | BSN in Patient.identifier | Patient context and readability |
 | Cancellation Request Task only when the Coordination Task is in-progress | Cancellation Request Task |
 | Same owner and type of work on a Cancellation Request Task as on its Coordination Task | Cancellation Request Task; Type of work on the Task |
