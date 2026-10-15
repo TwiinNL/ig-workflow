@@ -34,6 +34,12 @@ Applies to: IG Publisher 3.0.0, `hl7.fhir.uv.subscriptions-backport.r4#1.1.0`. W
 
 The published package contains `package/.index.json` with `"files": []`, so the publisher finds none of its resources. The CI step "Work around empty index of Backport package" puts the package in the cache and removes `.index.json`. For a local build, remove `~/.fhir/packages/hl7.fhir.uv.subscriptions-backport.r4#1.1.0/package/.index.json` once.
 
+## Deprecated regex extension on the filter of the Backport package
+
+Applies to: IG Publisher 3.0.0, `hl7.fhir.uv.subscriptions-backport.r4#1.1.0`. Not allowlisted; an information message, not a warning.
+
+The publisher reports `The extension http://hl7.org/fhir/StructureDefinition/regex|5.3.0 is deprecated` on `StructureDefinition/twiin-workflow-subscription`, at `Extension.value[x]` of `backport-filter-criteria`. The extension is part of that profile in the Subscriptions R5 Backport package and is copied into the snapshot; this IG cannot remove it. The form of the filter is checked by the invariant `twiin-wsub-1`.
+
 ## Several versions of `hl7.terminology.r4`
 
 COW IG 1.0.0-ballot depends on `hl7.terminology.r4#6.2.0` and `hl7.fhir.uv.extensions.r4#5.2.0`; Notifications on 7.4.0 and 5.3.0. The publisher uses 7.4.0 and 5.3.0, the versions in this IG's own `dependsOn`, and also loads the older versions that dependencies bring. This gives warnings such as `There are multiple different potential matches for the url 'http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType'`. Not allowlisted; warnings do not fail the build.

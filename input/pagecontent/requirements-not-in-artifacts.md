@@ -24,6 +24,8 @@ This page is informative. Many requirements of TA Workflow concern behaviour, ac
 | Handling the end of a Coordination Task | Handling the End of a Coordination Task |
 | Ids stable, opaque and unpredictable | Identifiers of Tasks and Subscriptions |
 | Requirements on SubscriptionTopics of use cases | SubscriptionTopic; Use-case agreements under TA Notifications |
+| The filter identifies exactly one HealthcareService | Subscription |
+| channel.endpoint begins with the address of an Endpoint in HealthcareService.endpoint with payloadType Notification, compared per path segment | Subscription |
 | One Subscription per HealthcareService, topic and base URL; endpoint; heartbeat interval | Subscription |
 | No authorization value in notifications | Authorization value |
 | Resynchronization by search | Resynchronization |
