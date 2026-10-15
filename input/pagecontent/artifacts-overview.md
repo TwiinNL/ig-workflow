@@ -60,7 +60,7 @@ The capability statement imports the Twiin Subscription Server of TA Notificatio
 | [ServiceRequest: transfer of care](ServiceRequest-0b7c5d0e-6f3a-4c2b-9e1d-8a4f2c6b3d75.html) | Request; Patient context and readability |
 | [ServiceRequest: no definition](ServiceRequest-a529d458-5bec-4d91-8ed8-f4fd5bb93720.html) | Request; Routing by the Fulfiller |
 | [Patient](Patient-3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90.html) | Patient context and readability |
-| [Coordination Task: candidate invited](Task-6d2e9f41-8b3c-4a7d-b5e2-1c9f7a3d8e64.html) | Multiple Fulfillers Pattern |
+| [Coordination Task: candidate invited](Task-6d2e9f41-8b3c-4a7d-b5e2-1c9f7a3d8e64.html) | Multiple Fulfillers Pattern; Sharing additional content; Patient context and readability |
 | [Coordination Task: candidate selected](Task-a41c7e2b-5f9d-4e3a-8c6b-2d7f1e9a5b38.html) | Multiple Fulfillers Pattern; Bidding |
 | [Coordination Task: candidate not selected](Task-c8e3d5a7-2b4f-4d9e-a1c6-7f3b8e2d4a91.html) | Reason for cancelling a non-selected candidate |
 | [Coordination Task: single Fulfiller, in progress](Task-e2f7a9c1-4d6b-4b8e-9a3f-6c1d5e8b2a47.html) | Single Fulfiller Pattern; Sharing additional content |

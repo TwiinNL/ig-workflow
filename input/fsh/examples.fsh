@@ -77,7 +77,7 @@ Instance: 6d2e9f41-8b3c-4a7d-b5e2-1c9f7a3d8e64
 InstanceOf: TwiinCoordinationTask
 Usage: #example
 Title: "Coordination Task: candidate invited"
-Description: "A bidding task in the Multiple Fulfillers Pattern before selection: code request-fulfillment, for empty (TA sections Multiple Fulfillers Pattern; Patient context and readability)."
+Description: "A bidding task in the Multiple Fulfillers Pattern before selection: code request-fulfillment, for empty (TA sections Multiple Fulfillers Pattern; Patient context and readability). Task.input also carries a non-identifying entry with its content inline, as allowed before selection (TA sections Sharing additional content; Patient context and readability)."
 * identifier.system = "https://placer.example.org/task"
 * identifier.value = "6d2e9f41-8b3c-4a7d-b5e2-1c9f7a3d8e64"
 * status = #requested
@@ -85,6 +85,8 @@ Description: "A bidding task in the Multiple Fulfillers Pattern before selection
 * insert CoordinationTaskBase
 * insert OwnerA
 * insert LocationA
+* input[1].type.text = "Care need summary"
+* input[1].valueString = "Requires help with mobility and daily wound care; no special diet."
 
 Instance: a41c7e2b-5f9d-4e3a-8c6b-2d7f1e9a5b38
 InstanceOf: TwiinCoordinationTask
