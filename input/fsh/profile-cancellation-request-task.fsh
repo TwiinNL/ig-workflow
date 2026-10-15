@@ -2,7 +2,7 @@ Profile: TwiinCancellationRequestTask
 Parent: $cow-cancellation-request-task
 Id: twiin-cancellation-request-task
 Title: "Twiin Cancellation Request Task"
-Description: "Cancellation Request Task under TA Workflow, used by the Placer to ask the Fulfiller to stop work that has started (TA sections Preliminary description of the profiles → Cancellation Request Task; Cancellation Request Task; Type of work on the Task)."
+Description: "Cancellation Request Task under TA Workflow, used by the Placer to ask the Fulfiller to stop work that has started (TA sections Summary of the profiles → Cancellation Request Task; Cancellation Request Task; Type of work on the Task)."
 * ^status = #draft
 * ^experimental = false
 * obeys twiin-crt-1 and twiin-task-1

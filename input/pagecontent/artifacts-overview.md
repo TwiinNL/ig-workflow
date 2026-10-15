@@ -4,15 +4,15 @@ This page is informative. It lists the artifacts in this guide and the section o
 
 | Artifact | Based on | TA section |
 |---|---|---|
-| [Twiin Coordination Task](StructureDefinition-twiin-coordination-task.html) | `coordination-task` (COW IG 1.0.0-ballot) | Preliminary description of the profiles → Coordination Task; Coordination Task; Status of the Coordination Task; Patient context and readability; Type of work on the Task; Sharing additional content; Search parameters |
-| [Twiin Cancellation Request Task](StructureDefinition-twiin-cancellation-request-task.html) | `cancellation-request-task` (COW IG 1.0.0-ballot) | Preliminary description of the profiles → Cancellation Request Task; Cancellation Request Task |
-| [Twiin Authorization Cancellation Request Task](StructureDefinition-twiin-authorization-cancellation-request-task.html) | `Task` (FHIR R4) | Preliminary description of the profiles → Authorization Cancellation Request Task; Cancellation by the Fulfiller |
-| [Twiin Workflow ServiceRequest](StructureDefinition-twiin-workflow-servicerequest.html) | `ServiceRequest` (FHIR R4) | Preliminary description of the profiles → ServiceRequest; Request; Patient context and readability |
+| [Twiin Coordination Task](StructureDefinition-twiin-coordination-task.html) | `coordination-task` (COW IG 1.0.0-ballot) | Summary of the profiles → Coordination Task; Coordination Task; Status of the Coordination Task; Patient context and readability; Type of work on the Task; Sharing additional content; Search parameters |
+| [Twiin Cancellation Request Task](StructureDefinition-twiin-cancellation-request-task.html) | `cancellation-request-task` (COW IG 1.0.0-ballot) | Summary of the profiles → Cancellation Request Task; Cancellation Request Task |
+| [Twiin Authorization Cancellation Request Task](StructureDefinition-twiin-authorization-cancellation-request-task.html) | `Task` (FHIR R4) | Summary of the profiles → Authorization Cancellation Request Task; Cancellation by the Fulfiller |
+| [Twiin Workflow ServiceRequest](StructureDefinition-twiin-workflow-servicerequest.html) | `ServiceRequest` (FHIR R4) | Summary of the profiles → ServiceRequest; Request; Patient context and readability |
 | [Twiin Workflow Subscription](StructureDefinition-twiin-workflow-subscription.html) | `twiin-subscription` (Twiin Notifications 0.1.1-draft) | Subscription |
 
 Task.owner and Task.location refer to a HealthcareService and a Location, with the type and a complete identifier (system, value and the identifier of its assigner) required. That they are profiled by GF Addressing is not expressed in the artifacts of this guide (see [Requirements not expressed in artifacts](requirements-not-in-artifacts.html)). The invariant `twiin-aid-1` excludes an assigner identified by a KvK number; the URA system of the assigner is not fixed in this guide.
 
-COW IG defines no profile for the Authorization Cancellation Request Task. Its requester is the Fulfiller as an organization, identified by its URA, as its owner is the Placer: FHIR R4 does not allow Task.requester to refer to a HealthcareService (TA section Preliminary description of the profiles → Authorization Cancellation Request Task).
+COW IG defines no profile for the Authorization Cancellation Request Task. Its requester is the Fulfiller as an organization, identified by its URA, as its owner is the Placer: FHIR R4 does not allow Task.requester to refer to a HealthcareService (TA section Summary of the profiles → Authorization Cancellation Request Task).
 
 Some constraints interpret the TA:
 
@@ -58,6 +58,7 @@ The capability statement imports the Twiin Subscription Server of TA Notificatio
 | Example | TA section |
 |---|---|
 | [ServiceRequest: transfer of care](ServiceRequest-0b7c5d0e-6f3a-4c2b-9e1d-8a4f2c6b3d75.html) | Request; Patient context and readability |
+| [ServiceRequest: no definition](ServiceRequest-a529d458-5bec-4d91-8ed8-f4fd5bb93720.html) | Request; Routing by the Fulfiller |
 | [Patient](Patient-3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90.html) | Patient context and readability |
 | [Coordination Task: candidate invited](Task-6d2e9f41-8b3c-4a7d-b5e2-1c9f7a3d8e64.html) | Multiple Fulfillers Pattern |
 | [Coordination Task: candidate selected](Task-a41c7e2b-5f9d-4e3a-8c6b-2d7f1e9a5b38.html) | Multiple Fulfillers Pattern; Bidding |

@@ -2,7 +2,7 @@ Profile: TwiinAuthorizationCancellationRequestTask
 Parent: Task
 Id: twiin-authorization-cancellation-request-task
 Title: "Twiin Authorization Cancellation Request Task"
-Description: "Authorization Cancellation Request Task under TA Workflow, used by a Fulfiller to ask the Placer to withdraw the Request itself (TA sections Preliminary description of the profiles → Authorization Cancellation Request Task; Cancellation by the Fulfiller). COW IG defines no profile for this Task. requester and owner identify the Fulfiller and the Placer as organizations, by their URA."
+Description: "Authorization Cancellation Request Task under TA Workflow, used by a Fulfiller to ask the Placer to withdraw the Request itself (TA sections Summary of the profiles → Authorization Cancellation Request Task; Cancellation by the Fulfiller). COW IG defines no profile for this Task. requester and owner identify the Fulfiller and the Placer as organizations, by their URA."
 * ^status = #draft
 * ^experimental = false
 * obeys twiin-acrt-1 and twiin-task-1

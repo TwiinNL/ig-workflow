@@ -10,10 +10,10 @@ This page is informative. Many requirements of TA Workflow concern behaviour, ac
 | Elements the Fulfiller may change, and the reserved value not-selected | Write access |
 | Version-aware updates, If-Match and 412 | Concurrent writes |
 | Permitted status changes and who makes them | Status of the Coordination Task; Cancellation Request Task |
-| Status requested at creation | Preliminary description of the profiles |
+| Status requested at creation | Summary of the profiles |
 | Selection: exactly one candidate, atomic update, cancelling the others | Multiple Fulfillers Pattern |
 | ServiceRequest.performer unset until selection | Request; Multiple Fulfillers Pattern |
-| ServiceRequest.code carries the code of the ActivityDefinition | Request |
+| ServiceRequest.code carries the code of the ActivityDefinition to which ServiceRequest.instantiatesCanonical refers, where that ActivityDefinition has a code | Request |
 | Read access to the Request and the Patient before and after selection | Patient context and readability |
 | No information that identifies the patient before selection | Patient context and readability; Sharing additional content |
 | BSN in Patient.identifier | Patient context and readability |

@@ -2,7 +2,7 @@ Profile: TwiinCoordinationTask
 Parent: $cow-coordination-task
 Id: twiin-coordination-task
 Title: "Twiin Coordination Task"
-Description: "Coordination Task under TA Workflow (TA sections Preliminary description of the profiles → Coordination Task; Coordination Task; Status of the Coordination Task; Patient context and readability; Type of work on the Task; Sharing additional content; Search parameters; Codes of this TA)."
+Description: "Coordination Task under TA Workflow (TA sections Summary of the profiles → Coordination Task; Coordination Task; Status of the Coordination Task; Patient context and readability; Type of work on the Task; Sharing additional content; Search parameters; Codes of this TA)."
 * ^status = #draft
 * ^experimental = false
 * obeys twiin-ct-1 and twiin-ct-2 and twiin-ct-3 and twiin-ct-4 and twiin-ct-5 and twiin-task-1

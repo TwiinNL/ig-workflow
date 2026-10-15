@@ -62,6 +62,17 @@ Description: "The Request, with subject a Patient and instantiatesCanonical refe
 * subject = Reference(Patient/3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90)
 * authoredOn = "2026-10-09T08:55:00+02:00"
 
+Instance: a529d458-5bec-4d91-8ed8-f4fd5bb93720
+InstanceOf: TwiinWorkflowServiceRequest
+Usage: #example
+Title: "ServiceRequest: no definition"
+Description: "A Request that follows no predefined definition and has no standard dataset; it is routed on ServiceRequest.code alone (TA sections Request; Routing by the Fulfiller)."
+* status = #active
+* intent = #order
+* code = $sct#308292007
+* subject = Reference(Patient/3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90)
+* authoredOn = "2026-10-09T09:10:00+02:00"
+
 Instance: 6d2e9f41-8b3c-4a7d-b5e2-1c9f7a3d8e64
 InstanceOf: TwiinCoordinationTask
 Usage: #example
