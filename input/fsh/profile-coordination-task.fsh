@@ -5,7 +5,7 @@ Title: "Twiin Coordination Task"
 Description: "Coordination Task under TA Workflow (TA sections Summary of the profiles → Coordination Task; Coordination Task; Status of the Coordination Task; Patient context and readability; Type of work on the Task; Sharing additional content; Search parameters; Codes of this TA)."
 * ^status = #draft
 * ^experimental = false
-* obeys twiin-ct-1 and twiin-ct-2 and twiin-ct-3 and twiin-ct-4 and twiin-ct-5 and twiin-task-1
+* obeys twiin-ct-1 and twiin-ct-2 and twiin-ct-3 and twiin-ct-4 and twiin-ct-5 and twiin-ct-7 and twiin-task-1
 * intent = #order
 * code from TAWorkflowTaskCodeVS (required)
 * statusReason from TAWorkflowStatusReasonVS (extensible)
@@ -66,3 +66,8 @@ Invariant: twiin-ct-6
 Description: "for.identifier SHOULD NOT carry the BSN."
 Expression: "system != 'http://fhir.nl/fhir/NamingSystem/bsn'"
 Severity: #warning
+
+Invariant: twiin-ct-7
+Description: "Work is started or completed only with Task.code fulfill (TA sections Recognizing the pattern that applies; Status of the Coordination Task)."
+Expression: "(status = 'in-progress' or status = 'completed') implies code.coding.where(system = 'http://hl7.org/fhir/CodeSystem/task-code' and code = 'fulfill').exists()"
+Severity: #error
