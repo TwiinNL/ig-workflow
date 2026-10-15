@@ -18,10 +18,18 @@ Description: "Coordination Task under TA Workflow (TA sections Preliminary descr
 * requester.identifier.system 1..1
 * requester.identifier.system = $ura
 * insert OwnerHealthcareService
-* location only Reference($nl-gf-location)
+* location only Reference(Location)
+* location ^comment = "The reference identifies a Location as profiled by GF Addressing (NL-GF-Location), by the identifier from its AssignedId slice. See https://minvws.github.io/generiekefuncties-docs"
+* location.type 1..1
+* location.type = "Location"
 * location.identifier 1..1
-* location.identifier only $nl-gf-custodianassignedidentifier
+* location.identifier.system 1..1
+* location.identifier.value 1..1
 * location.identifier obeys twiin-aid-1
+* location.identifier.assigner 1..1
+* location.identifier.assigner.identifier 1..1
+* location.identifier.assigner.identifier.system 1..1
+* location.identifier.assigner.identifier.value 1..1
 * insert TypeOfWorkInput
 * input contains supplementalResource 0..* and supplementalQuery 0..*
 * input[supplementalResource].type = TAWorkflowCS#supplemental-resource

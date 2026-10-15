@@ -1,15 +1,14 @@
-Two dependencies of this implementation guide are not on the FHIR package registry (packages.fhir.org), so SUSHI, the IG Publisher and the validator cannot download them:
+One dependency of this implementation guide is not on the FHIR package registry (packages.fhir.org), so SUSHI, the IG Publisher and the validator cannot download it:
 
 | Package | URL | sha-256 |
 |---|---|---|
-| `nl.generiekefuncties.csd#1.0.0` | https://minvws.github.io/generiekefuncties-docs/package.tgz | `847ea68d0ba5df6c0c2faa6a939d23f49e167401e338752d1ef72a3cf509c849` |
 | `nl.twiin.fhir.r4.notifications#0.1.1-draft` | https://fhir.twiin.nl/ig/notifications/0.1.1-draft/package.tgz | `cec58f60184740ec51994b44c5ae4ddc42b870576ff20cfc831f9a47a183f2fd` |
 
-These are the URLs and checksums used in the CI of this guide. The URL of `nl.generiekefuncties.csd` has no version: it serves the package that was last built, so the checksum only matches the package this guide was built against.
+This is the URL and checksum used in the CI of this guide.
 
 ### Putting the packages in the local package cache
 
-The tools read packages from the local FHIR package cache, `<home directory>/.fhir/packages`. A package sits in a folder `<id>#<version>`, with the contents of the tarball in a subfolder `package`. For each package:
+The tools read packages from the local FHIR package cache, `<home directory>/.fhir/packages`. A package sits in a folder `<id>#<version>`, with the contents of the tarball in a subfolder `package`. For the package:
 
 ```sh
 curl -sSfL -o package.tgz <URL>

@@ -26,6 +26,7 @@ RuleSet: OwnerB
 * insert AssignedId(owner.identifier, https://fulfiller-b.example.org/healthcareservice, wijkverpleging-noord, 11223344)
 
 RuleSet: LocationA
+* location.type = "Location"
 * insert AssignedId(location.identifier, https://fulfiller-a.example.org/location, vestiging-centrum, 87654321)
 
 RuleSet: TypeOfWork

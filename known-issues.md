@@ -10,23 +10,17 @@ Fixed upstream in [HL7/fhir-ig-publisher d64c08c](https://github.com/HL7/fhir-ig
 
 ## Packages not on the FHIR package registry
 
-Applies to: `nl.generiekefuncties.csd#1.0.0` and `nl.twiin.fhir.r4.notifications#0.1.1-draft`.
+Applies to: `nl.twiin.fhir.r4.notifications#0.1.1-draft`.
 
-Neither package is on packages.fhir.org, so SUSHI and the publisher cannot download them. `.github/scripts/install-packages.sh` downloads each tarball, checks its pinned sha-256 and puts it in `~/.fhir/packages`; it fails on a download error or a different checksum. CI runs it before SUSHI (step "Install packages not on the registry"); run it once for a local build.
+The package is not on packages.fhir.org, so SUSHI and the publisher cannot download it. `.github/scripts/install-packages.sh` downloads the tarball, checks its pinned sha-256 and puts it in `~/.fhir/packages`; it fails on a download error or a different checksum. CI runs it before SUSHI (step "Install packages not on the registry"); run it once for a local build.
 
 | Package | URL | sha-256 |
 |---|---|---|
-| `nl.generiekefuncties.csd#1.0.0` | https://minvws.github.io/generiekefuncties-docs/package.tgz | `847ea68d0ba5df6c0c2faa6a939d23f49e167401e338752d1ef72a3cf509c849` (determined 2026-10-09) |
 | `nl.twiin.fhir.r4.notifications#0.1.1-draft` | https://fhir.twiin.nl/ig/notifications/0.1.1-draft/package.tgz | `cec58f60184740ec51994b44c5ae4ddc42b870576ff20cfc831f9a47a183f2fd` |
-
-The URL of `nl.generiekefuncties.csd` has no version: it serves whatever the publisher of GF Addressing last built. When that changes, the checksum fails and the build stops. Then check the new package and update the version and the checksum together.
 
 ## SUSHI does not load transitive dependencies
 
-Applies to: SUSHI 3.x. SUSHI resolves profiles only from the packages listed in `sushi-config.yaml`. Two transitive dependencies are therefore listed explicitly:
-
-- `hl7.fhir.eu.base#2.0.0`, a dependency of `nl.generiekefuncties.csd`. NL-GF-Location is based on its `location-eu-core`; without it SUSHI rejects `Reference(nl-gf-location)` on Task.location.
-- `hl7.fhir.uv.subscriptions-backport.r4#1.1.0`, a dependency of COW IG and of Notifications. Twiin Workflow Subscription constrains its extensions. The version must equal the one in Notifications.
+Applies to: SUSHI 3.x. SUSHI resolves profiles only from the packages listed in `sushi-config.yaml`. One transitive dependency is therefore listed explicitly: `hl7.fhir.uv.subscriptions-backport.r4#1.1.0`, a dependency of COW IG and of Notifications. Twiin Workflow Subscription constrains its extensions. The version must equal the one in Notifications.
 
 ## Backport IG declares FHIR 4.0.0
 
@@ -42,7 +36,7 @@ The published package contains `package/.index.json` with `"files": []`, so the 
 
 ## Several versions of `hl7.terminology.r4`
 
-COW IG 1.0.0-ballot depends on `hl7.terminology.r4#6.2.0` and `hl7.fhir.uv.extensions.r4#5.2.0`; Notifications and GF Addressing on 7.4.0 and 5.3.0. The publisher uses 7.4.0 and 5.3.0, the versions in this IG's own `dependsOn`, and also loads the older versions that dependencies bring. This gives warnings such as `There are multiple different potential matches for the url 'http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType'`. Not allowlisted; warnings do not fail the build.
+COW IG 1.0.0-ballot depends on `hl7.terminology.r4#6.2.0` and `hl7.fhir.uv.extensions.r4#5.2.0`; Notifications on 7.4.0 and 5.3.0. The publisher uses 7.4.0 and 5.3.0, the versions in this IG's own `dependsOn`, and also loads the older versions that dependencies bring. This gives warnings such as `There are multiple different potential matches for the url 'http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType'`. Not allowlisted; warnings do not fail the build.
 
 ## Not fixed by `twiin.base.template#0.1.1`
 

@@ -4,6 +4,7 @@ This page is informative. Many requirements of TA Workflow concern behaviour, ac
 |---|---|
 | Hosting of the Coordination Task at the Placer | Design Choices; Coordination Task |
 | Coordination Task only for a HealthcareService and topic with a Subscription | Actors; Subscription |
+| Task.owner and Task.location refer to a HealthcareService and a Location as profiled by GF Addressing (NL-GF-HealthcareService, NL-GF-Location), by the identifier from their AssignedId slice. | Summary of the profiles → Coordination Task, Cancellation Request Task; Search parameters |
 | Owner identifier resolves to exactly one HealthcareService | Coordination Task; Subscription; Search parameters |
 | Recording of the accountable organization and access control | Coordination Task; Write access |
 | Elements the Fulfiller may change, and the reserved value not-selected | Write access |

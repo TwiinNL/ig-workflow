@@ -10,7 +10,7 @@ This page is informative. It lists the artifacts in this guide and the section o
 | [Twiin Workflow ServiceRequest](StructureDefinition-twiin-workflow-servicerequest.html) | `ServiceRequest` (FHIR R4) | Preliminary description of the profiles → ServiceRequest; Request; Patient context and readability |
 | [Twiin Workflow Subscription](StructureDefinition-twiin-workflow-subscription.html) | `twiin-subscription` (Twiin Notifications 0.1.1-draft) | Subscription |
 
-Task.owner and Task.location refer to NL-GF-HealthcareService and NL-GF-Location of GF Addressing (`nl.generiekefuncties.csd` 1.0.0). Their identifier has the type `nl-gf-custodianassignedidentifier`, the profile of the AssignedId slice in those profiles. The invariant `twiin-aid-1` excludes an assigner identified by a KvK number; the URA system of the assigner is the one GF Addressing prescribes and is not fixed in this guide.
+Task.owner and Task.location refer to a HealthcareService and a Location, with the type and a complete identifier (system, value and the identifier of its assigner) required. That they are profiled by GF Addressing is not expressed in the artifacts of this guide (see [Requirements not expressed in artifacts](requirements-not-in-artifacts.html)). The invariant `twiin-aid-1` excludes an assigner identified by a KvK number; the URA system of the assigner is not fixed in this guide.
 
 COW IG defines no profile for the Authorization Cancellation Request Task. Its requester is the Fulfiller as an organization, identified by its URA, as its owner is the Placer: FHIR R4 does not allow Task.requester to refer to a HealthcareService (TA section Preliminary description of the profiles → Authorization Cancellation Request Task).
 
