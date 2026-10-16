@@ -64,6 +64,7 @@ The capability statement imports the Twiin Subscription Server of TA Notificatio
 | [Coordination Task: candidate selected](Task-a41c7e2b-5f9d-4e3a-8c6b-2d7f1e9a5b38.html) | Multiple Fulfillers Pattern; Bidding |
 | [Coordination Task: candidate not selected](Task-c8e3d5a7-2b4f-4d9e-a1c6-7f3b8e2d4a91.html) | Reason for cancelling a non-selected candidate |
 | [Coordination Task: single Fulfiller, in progress](Task-e2f7a9c1-4d6b-4b8e-9a3f-6c1d5e8b2a47.html) | Single Fulfiller Pattern; Sharing additional content |
+| [Coordination Task: single Fulfiller, awaiting information](Task-948d41c4-820f-49ed-bbb7-c15e6d7fc699.html) | Single Fulfiller Pattern; Business status |
 | [Cancellation Request Task](Task-5b9d3e7f-1a2c-4f6e-8d4b-9e2a7c1f3b56.html) | Cancellation Request (After in-progress) |
 | [Authorization Cancellation Request Task](Task-9c4a1f8e-7d3b-4e2a-b6f9-3a8e5d2c7b14.html) | Cancellation by the Fulfiller |
 | [Subscription for a HealthcareService](Subscription-1e8b4c6d-3f7a-4b2e-9d5c-8a1f6e3b7c29.html) | Subscription |

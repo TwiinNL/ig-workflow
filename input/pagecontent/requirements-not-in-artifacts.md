@@ -7,7 +7,7 @@ This page is informative. Many requirements of TA Workflow concern behaviour, ac
 | Task.owner and Task.location refer to a HealthcareService and a Location as profiled by GF Addressing (NL-GF-HealthcareService, NL-GF-Location), by the identifier from their AssignedId slice. | Summary of the profiles → Coordination Task, Cancellation Request Task; Search parameters |
 | Owner identifier resolves to exactly one HealthcareService | Coordination Task; Subscription; Search parameters |
 | Recording of the accountable organization and access control | Coordination Task; Write access |
-| Elements the Fulfiller may change, and the reserved value not-selected | Write access |
+| Elements the Fulfiller may change (status, businessStatus, statusReason, executionPeriod, lastModified and output), and the reserved values: the code selected in Task.businessStatus and the code not-selected in Task.statusReason are reserved for the Placer | Write access |
 | Version-aware updates, If-Match and 412 | Concurrent writes |
 | Permitted status changes and who makes them | Status of the Coordination Task; Cancellation Request Task |
 | Status requested at creation | Summary of the profiles |

@@ -10,6 +10,9 @@ Description: "Coordination Task under TA Workflow (TA sections Summary of the pr
 * code from TAWorkflowTaskCodeVS (required)
 * statusReason from TAWorkflowStatusReasonVS (extensible)
 * businessStatus from TAWorkflowBusinessStatusVS (extensible)
+* businessStatus ^short = "Progress within the status; selected is reserved for the Placer"
+* businessStatus ^definition = "The Placer sets selected at selection. The Fulfiller MAY set a value to report progress within a status (TA sections Business status; Write access)."
+* businessStatus ^comment = "selected is reserved for the Placer (TA section Write access). A use case MAY define further codes."
 * focus only Reference(TwiinWorkflowServiceRequest)
 * authoredOn 1..1
 * requester 1..1
