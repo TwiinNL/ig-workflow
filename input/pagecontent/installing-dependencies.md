@@ -2,7 +2,7 @@ One dependency of this implementation guide is not on the FHIR package registry 
 
 | Package | URL | sha-256 |
 |---|---|---|
-| `nl.twiin.fhir.r4.notifications#0.1.1-draft` | https://fhir.twiin.nl/ig/notifications/0.1.1-draft/package.tgz | `cec58f60184740ec51994b44c5ae4ddc42b870576ff20cfc831f9a47a183f2fd` |
+| `nl.twiin.fhir.r4.notifications#0.2.0-draft` | https://fhir.twiin.nl/ig/notifications/0.2.0-draft/package.tgz | `041cb3d7b5f4fad02d46dec47c1f6e350a9441f522c394776269ff6fddc1f995` |
 
 This is the URL and checksum used in the CI of this guide.
 
@@ -17,7 +17,7 @@ mkdir -p ~/.fhir/packages/<id>#<version>
 tar xzf package.tgz -C ~/.fhir/packages/<id>#<version>
 ```
 
-For example, for `nl.twiin.fhir.r4.notifications#0.1.1-draft` the result is `~/.fhir/packages/nl.twiin.fhir.r4.notifications#0.1.1-draft/package/package.json`. Do not continue when the checksum differs.
+For example, for `nl.twiin.fhir.r4.notifications#0.2.0-draft` the result is `~/.fhir/packages/nl.twiin.fhir.r4.notifications#0.2.0-draft/package/package.json`. Do not continue when the checksum differs.
 
 SUSHI, the IG Publisher and the validator find the packages in the cache without further configuration, as long as the version in the dependency of the guide equals the folder name.
 

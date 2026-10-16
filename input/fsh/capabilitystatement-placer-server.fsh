@@ -23,7 +23,7 @@ Description: "Requirements for the FHIR server of the Placer under TA Workflow (
 * experimental = false
 * date = "2026-10-09"
 * kind = #requirements
-* imports = "https://fhir.twiin.nl/ig/notifications/CapabilityStatement/twiin-subscription-server|0.1.1-draft"
+* imports = "https://fhir.twiin.nl/ig/notifications/CapabilityStatement/twiin-subscription-server|0.2.0-draft"
 * fhirVersion = #4.0.1
 * format[0] = #json
 * patchFormat[0] = #application/json-patch+json

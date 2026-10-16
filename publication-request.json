@@ -5,7 +5,7 @@
   "status": "draft",
   "sequence": "Release 1",
   "path": "https://fhir.twiin.nl/ig/workflow/0.2.0-draft",
-  "desc": "Second draft publication, technical specification of TA Workflow 0.3, in the Twiin house style",
+  "desc": "Third draft publication, technical specification of TA Workflow 0.3, in the Twiin house style",
   "first": false,
   "registry-description": "Technical specification of TA Workflow, part of the technical core of the Twiin Afsprakenstelsel.",
   "registry-country": "nl",

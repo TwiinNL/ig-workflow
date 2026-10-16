@@ -8,7 +8,7 @@ This page is informative. It lists the artifacts in this guide and the section o
 | [Twiin Cancellation Request Task](StructureDefinition-twiin-cancellation-request-task.html) | `cancellation-request-task` (COW IG 1.0.0-ballot) | Summary of the profiles → Cancellation Request Task; Cancellation Request Task |
 | [Twiin Authorization Cancellation Request Task](StructureDefinition-twiin-authorization-cancellation-request-task.html) | `Task` (FHIR R4) | Summary of the profiles → Authorization Cancellation Request Task; Cancellation by the Fulfiller |
 | [Twiin Workflow ServiceRequest](StructureDefinition-twiin-workflow-servicerequest.html) | `ServiceRequest` (FHIR R4) | Summary of the profiles → ServiceRequest; Request; Patient context and readability |
-| [Twiin Workflow Subscription](StructureDefinition-twiin-workflow-subscription.html) | `twiin-subscription` (Twiin Notifications 0.1.1-draft) | Subscription |
+| [Twiin Workflow Subscription](StructureDefinition-twiin-workflow-subscription.html) | `twiin-subscription` (Twiin Notifications 0.2.0-draft) | Subscription |
 
 Task.owner and Task.location refer to a HealthcareService and a Location, with the type and a complete identifier (system, value and the identifier of its assigner) required. That they are profiled by GF Addressing is not expressed in the artifacts of this guide (see [Requirements not expressed in artifacts](requirements-not-in-artifacts.html)). The invariant `twiin-aid-1` excludes an assigner identified by a KvK number; the URA system of the assigner is not fixed in this guide.
 

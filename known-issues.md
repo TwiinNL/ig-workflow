@@ -10,13 +10,13 @@ Fixed upstream in [HL7/fhir-ig-publisher d64c08c](https://github.com/HL7/fhir-ig
 
 ## Packages not on the FHIR package registry
 
-Applies to: `nl.twiin.fhir.r4.notifications#0.1.1-draft`.
+Applies to: `nl.twiin.fhir.r4.notifications#0.2.0-draft`.
 
 The package is not on packages.fhir.org, so SUSHI and the publisher cannot download it. `.github/scripts/install-packages.sh` downloads the tarball, checks its pinned sha-256 and puts it in `~/.fhir/packages`; it fails on a download error or a different checksum. CI runs it before SUSHI (step "Install packages not on the registry"); run it once for a local build.
 
 | Package | URL | sha-256 |
 |---|---|---|
-| `nl.twiin.fhir.r4.notifications#0.1.1-draft` | https://fhir.twiin.nl/ig/notifications/0.1.1-draft/package.tgz | `cec58f60184740ec51994b44c5ae4ddc42b870576ff20cfc831f9a47a183f2fd` |
+| `nl.twiin.fhir.r4.notifications#0.2.0-draft` | https://fhir.twiin.nl/ig/notifications/0.2.0-draft/package.tgz | `041cb3d7b5f4fad02d46dec47c1f6e350a9441f522c394776269ff6fddc1f995` |
 
 ## SUSHI does not load transitive dependencies
 

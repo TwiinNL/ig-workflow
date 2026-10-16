@@ -26,6 +26,6 @@ install() {
   echo "Installed $name#$version (sha-256 $sha)"
 }
 
-install nl.twiin.fhir.r4.notifications 0.1.1-draft \
-  https://fhir.twiin.nl/ig/notifications/0.1.1-draft/package.tgz \
-  cec58f60184740ec51994b44c5ae4ddc42b870576ff20cfc831f9a47a183f2fd
+install nl.twiin.fhir.r4.notifications 0.2.0-draft \
+  https://fhir.twiin.nl/ig/notifications/0.2.0-draft/package.tgz \
+  041cb3d7b5f4fad02d46dec47c1f6e350a9441f522c394776269ff6fddc1f995
