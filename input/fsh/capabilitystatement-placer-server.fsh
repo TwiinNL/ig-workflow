@@ -23,7 +23,7 @@ Description: "Requirements for the FHIR server of the Placer under TA Workflow (
 * experimental = false
 * date = "2026-10-09"
 * kind = #requirements
-* imports = "https://fhir.twiin.nl/ig/notifications/CapabilityStatement/twiin-subscription-server|0.1.1-draft"
+* imports = "https://fhir.twiin.nl/ig/notifications/CapabilityStatement/twiin-subscription-server|0.2.0-draft"
 * fhirVersion = #4.0.1
 * format[0] = #json
 * patchFormat[0] = #application/json-patch+json
@@ -50,11 +50,11 @@ Description: "Requirements for the FHIR server of the Placer under TA Workflow (
 * rest[0].resource[0].interaction[3].documentation = "JSON Patch (application/json-patch+json), version-aware as update (TA section Concurrent writes)."
 * rest[0].resource[0].interaction[4].code = #create
 * rest[0].resource[0].interaction[4] insert Expect(SHALL)
-* rest[0].resource[0].interaction[4].documentation = "Only for the Authorization Cancellation Request Task, created by the Fulfiller (TA section Write access)."
+* rest[0].resource[0].interaction[4].documentation = "Only for the Authorization Cancellation Request Task (TA sections Write access; Cancellation by the Fulfiller)."
 * insert TaskSearch(0, owner, reference, http://hl7.org/fhir/SearchParameter/Task-owner)
-* rest[0].resource[0].searchParam[0].documentation = "Supported with the modifier :identifier, value `<system>|<value>` (TA section Search parameters)."
+* rest[0].resource[0].searchParam[0].documentation = "Supported with the modifier :identifier, value `[system]|[value]` (TA section Search parameters)."
 * insert TaskSearch(1, requester, reference, http://hl7.org/fhir/SearchParameter/Task-requester)
-* rest[0].resource[0].searchParam[1].documentation = "Supported with the modifier :identifier, value `<system>|<value>` (TA section Search parameters)."
+* rest[0].resource[0].searchParam[1].documentation = "Supported with the modifier :identifier, value `[system]|[value]` (TA section Search parameters)."
 * insert TaskSearch(2, focus, reference, http://hl7.org/fhir/SearchParameter/Task-focus)
 * rest[0].resource[0].searchParam[2].documentation = "TA section Resynchronization."
 * insert TaskSearch(3, code, token, http://hl7.org/fhir/SearchParameter/Task-code)
@@ -78,3 +78,7 @@ Description: "Requirements for the FHIR server of the Placer under TA Workflow (
 * rest[0].resource[2] insert Expect(SHALL)
 * rest[0].resource[2].interaction[0].code = #read
 * rest[0].resource[2].interaction[0] insert Expect(SHALL)
+// Subscription: the interactions come from the imported Twiin Subscription Server
+* rest[0].resource[3].type = #Subscription
+* rest[0].resource[3] insert Expect(SHALL)
+* rest[0].resource[3].supportedProfile[0] = Canonical(TwiinWorkflowSubscription)

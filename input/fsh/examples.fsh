@@ -26,6 +26,7 @@ RuleSet: OwnerB
 * insert AssignedId(owner.identifier, https://fulfiller-b.example.org/healthcareservice, wijkverpleging-noord, 11223344)
 
 RuleSet: LocationA
+* location.type = "Location"
 * insert AssignedId(location.identifier, https://fulfiller-a.example.org/location, vestiging-centrum, 87654321)
 
 RuleSet: TypeOfWork
@@ -61,11 +62,22 @@ Description: "The Request, with subject a Patient and instantiatesCanonical refe
 * subject = Reference(Patient/3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90)
 * authoredOn = "2026-10-09T08:55:00+02:00"
 
+Instance: a529d458-5bec-4d91-8ed8-f4fd5bb93720
+InstanceOf: TwiinWorkflowServiceRequest
+Usage: #example
+Title: "ServiceRequest: no definition"
+Description: "A Request that follows no predefined definition and has no standard dataset; it is routed on ServiceRequest.code alone (TA sections Request; Routing by the Fulfiller)."
+* status = #active
+* intent = #order
+* code = $sct#308292007
+* subject = Reference(Patient/3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90)
+* authoredOn = "2026-10-09T09:10:00+02:00"
+
 Instance: 6d2e9f41-8b3c-4a7d-b5e2-1c9f7a3d8e64
 InstanceOf: TwiinCoordinationTask
 Usage: #example
 Title: "Coordination Task: candidate invited"
-Description: "A bidding task in the Multiple Fulfillers Pattern before selection: code request-fulfillment, for empty (TA sections Multiple Fulfillers Pattern; Patient context and readability)."
+Description: "A bidding task in the Multiple Fulfillers Pattern before selection: code request-fulfillment, for empty (TA sections Multiple Fulfillers Pattern; Patient context and readability). Task.input also carries a non-identifying entry with its content inline, as allowed before selection (TA sections Sharing additional content; Patient context and readability)."
 * identifier.system = "https://placer.example.org/task"
 * identifier.value = "6d2e9f41-8b3c-4a7d-b5e2-1c9f7a3d8e64"
 * status = #requested
@@ -73,6 +85,8 @@ Description: "A bidding task in the Multiple Fulfillers Pattern before selection
 * insert CoordinationTaskBase
 * insert OwnerA
 * insert LocationA
+* input[1].type.text = "Care need summary"
+* input[1].valueString = "Requires help with mobility and daily wound care; no special diet."
 
 Instance: a41c7e2b-5f9d-4e3a-8c6b-2d7f1e9a5b38
 InstanceOf: TwiinCoordinationTask

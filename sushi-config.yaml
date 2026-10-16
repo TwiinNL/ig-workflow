@@ -4,7 +4,7 @@ name: TwiinWorkflow
 title: Twiin Workflow
 description: Technical specification of TA Workflow, part of the technical core of the Twiin Afsprakenstelsel.
 status: draft
-version: 0.1.1-draft
+version: 0.2.0-draft
 fhirVersion: 4.0.1
 publisher:
   name: Twiin
@@ -16,15 +16,14 @@ releaseLabel: "Draft – normative only when referenced by the Twiin afsprakenst
 
 dependencies:
   hl7.fhir.uv.cow: 1.0.0-ballot
-  nl.generiekefuncties.csd: 1.0.0
-  # Dependency of nl.generiekefuncties.csd; NL-GF-Location is based on its location-eu-core.
-  # Listed so that SUSHI, which does not load transitive dependencies, resolves that profile.
-  hl7.fhir.eu.base: 2.0.0
-  nl.twiin.fhir.r4.notifications: 0.1.1-draft
+  nl.twiin.fhir.r4.notifications: 0.2.0-draft
   # Same version as in nl.twiin.fhir.r4.notifications and hl7.fhir.uv.cow. Listed because
   # twiin-workflow-subscription constrains its extensions and SUSHI does not load
   # transitive dependencies.
   hl7.fhir.uv.subscriptions-backport.r4: 1.1.0
+
+parameters:
+  pin-canonicals: pin-multiples
 
 pages:
   index.md:

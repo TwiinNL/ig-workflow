@@ -89,7 +89,7 @@ jobs:
       - name: Drop cached Backport package
         run: rm -rf "$HOME/.fhir/packages/hl7.fhir.uv.subscriptions-backport.r4#1.1.0"
 
-      # nl.generiekefuncties.csd and nl.twiin.fhir.r4.notifications are not on the FHIR
+      # nl.twiin.fhir.r4.notifications is not on the FHIR
       # package registry. The script downloads them, checks the pinned sha-256 (fails on a
       # mismatch) and puts them in the package cache, replacing a restored copy. See known-issues.md.
       - name: Install packages not on the registry

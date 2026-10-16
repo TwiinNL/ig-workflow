@@ -10,23 +10,17 @@ Fixed upstream in [HL7/fhir-ig-publisher d64c08c](https://github.com/HL7/fhir-ig
 
 ## Packages not on the FHIR package registry
 
-Applies to: `nl.generiekefuncties.csd#1.0.0` and `nl.twiin.fhir.r4.notifications#0.1.1-draft`.
+Applies to: `nl.twiin.fhir.r4.notifications#0.2.0-draft`.
 
-Neither package is on packages.fhir.org, so SUSHI and the publisher cannot download them. `.github/scripts/install-packages.sh` downloads each tarball, checks its pinned sha-256 and puts it in `~/.fhir/packages`; it fails on a download error or a different checksum. CI runs it before SUSHI (step "Install packages not on the registry"); run it once for a local build.
+The package is not on packages.fhir.org, so SUSHI and the publisher cannot download it. `.github/scripts/install-packages.sh` downloads the tarball, checks its pinned sha-256 and puts it in `~/.fhir/packages`; it fails on a download error or a different checksum. CI runs it before SUSHI (step "Install packages not on the registry"); run it once for a local build.
 
 | Package | URL | sha-256 |
 |---|---|---|
-| `nl.generiekefuncties.csd#1.0.0` | https://minvws.github.io/generiekefuncties-docs/package.tgz | `847ea68d0ba5df6c0c2faa6a939d23f49e167401e338752d1ef72a3cf509c849` (determined 2026-10-09) |
-| `nl.twiin.fhir.r4.notifications#0.1.1-draft` | https://fhir.twiin.nl/ig/notifications/0.1.1-draft/package.tgz | `cec58f60184740ec51994b44c5ae4ddc42b870576ff20cfc831f9a47a183f2fd` |
-
-The URL of `nl.generiekefuncties.csd` has no version: it serves whatever the publisher of GF Addressing last built. When that changes, the checksum fails and the build stops. Then check the new package and update the version and the checksum together.
+| `nl.twiin.fhir.r4.notifications#0.2.0-draft` | https://fhir.twiin.nl/ig/notifications/0.2.0-draft/package.tgz | `041cb3d7b5f4fad02d46dec47c1f6e350a9441f522c394776269ff6fddc1f995` |
 
 ## SUSHI does not load transitive dependencies
 
-Applies to: SUSHI 3.x. SUSHI resolves profiles only from the packages listed in `sushi-config.yaml`. Two transitive dependencies are therefore listed explicitly:
-
-- `hl7.fhir.eu.base#2.0.0`, a dependency of `nl.generiekefuncties.csd`. NL-GF-Location is based on its `location-eu-core`; without it SUSHI rejects `Reference(nl-gf-location)` on Task.location.
-- `hl7.fhir.uv.subscriptions-backport.r4#1.1.0`, a dependency of COW IG and of Notifications. Twiin Workflow Subscription constrains its extensions. The version must equal the one in Notifications.
+Applies to: SUSHI 3.x. SUSHI resolves profiles only from the packages listed in `sushi-config.yaml`. One transitive dependency is therefore listed explicitly: `hl7.fhir.uv.subscriptions-backport.r4#1.1.0`, a dependency of COW IG and of Notifications. Twiin Workflow Subscription constrains its extensions. The version must equal the one in Notifications.
 
 ## Backport IG declares FHIR 4.0.0
 
@@ -40,15 +34,24 @@ Applies to: IG Publisher 3.0.0, `hl7.fhir.uv.subscriptions-backport.r4#1.1.0`. W
 
 The published package contains `package/.index.json` with `"files": []`, so the publisher finds none of its resources. The CI step "Work around empty index of Backport package" puts the package in the cache and removes `.index.json`. For a local build, remove `~/.fhir/packages/hl7.fhir.uv.subscriptions-backport.r4#1.1.0/package/.index.json` once.
 
+## Deprecated regex extension on the filter of the Backport package
+
+Applies to: IG Publisher 3.0.0, `hl7.fhir.uv.subscriptions-backport.r4#1.1.0`. Not allowlisted; an information message, not a warning.
+
+The publisher reports `The extension http://hl7.org/fhir/StructureDefinition/regex|5.3.0 is deprecated` on `StructureDefinition/twiin-workflow-subscription`, at `Extension.value[x]` of `backport-filter-criteria`. The extension is part of that profile in the Subscriptions R5 Backport package and is copied into the snapshot; this IG cannot remove it. The form of the filter is checked by the invariant `twiin-wsub-1`.
+
+## No OIDs on the terminology
+
+The CodeSystem `ta-workflow` and the ValueSets `ta-workflow-business-status`, `ta-workflow-status-reason` and `ta-workflow-task-code` have no OID; the publisher warns about each. The warnings are suppressed in `input/ignoreWarnings.txt`. No OIDs are assigned before 1.0.0. Reconsider at 1.0.0: a CodeSystem without an OID cannot be used in OID-based environments.
+
 ## Several versions of `hl7.terminology.r4`
 
-COW IG 1.0.0-ballot depends on `hl7.terminology.r4#6.2.0` and `hl7.fhir.uv.extensions.r4#5.2.0`; Notifications and GF Addressing on 7.4.0 and 5.3.0. The publisher uses 7.4.0 and 5.3.0, the versions in this IG's own `dependsOn`, and also loads the older versions that dependencies bring. This gives warnings such as `There are multiple different potential matches for the url 'http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType'`. Not allowlisted; warnings do not fail the build.
+COW IG 1.0.0-ballot depends on `hl7.terminology.r4#6.2.0` and `hl7.fhir.uv.extensions.r4#5.2.0`; Notifications on 7.4.0 and 5.3.0. The publisher uses 7.4.0 and 5.3.0, the versions in this IG's own `dependsOn`, and also loads the older versions that dependencies bring. This gives warnings such as `There are multiple different potential matches for the url 'http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType'`. Not allowlisted; warnings do not fail the build.
 
-## Not fixed by `twiin.base.template#0.1.1`
+## Not fixed by `twiin.base.template#0.1.2`
 
-Applies to: `twiin.base.template#0.1.1` (based on `fhir2.base.template#0.1.0`) with IG Publisher 3.0.0. The template fixes the redirect to `en/` for non-English browsers, the empty release label, the doubled `<h2 id="root">` on profile history pages and the not well formed profile pages (see its [README](https://github.com/TwiinNL/ig-template)); this repository has no workarounds for those any more. What remains, the same with `fhir2.base.template#0.1.0` alone and also listed in the template README:
+Applies to: `twiin.base.template#0.1.2` (based on `fhir2.base.template#0.1.0`) with IG Publisher 3.0.0. The template fixes the redirect to `en/` for non-English browsers, the empty release label, the doubled `<h2 id="root">` on profile history pages and the not well formed profile pages (see its [README](https://github.com/TwiinNL/ig-template)); this repository has no workarounds for those any more. What remains, the same with `fhir2.base.template#0.1.0` alone and also listed in the template README:
 
-- `searchform.html` has its own markup that the publisher reports as not well formed: 8 warnings for `output/searchform.html` and 8 for `output/en/searchform.html` (16 in total, not allowlisted, warnings do not fail the build).
 - Profile history pages are not in the page list of the publisher, so their breadcrumb bar is empty and the heading has no section number.
 
 ## HTML fragment `cross-version-analysis` is not included anywhere
