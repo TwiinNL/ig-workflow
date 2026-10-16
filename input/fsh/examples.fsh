@@ -139,6 +139,22 @@ Description: "Single Fulfiller Pattern: code fulfill and for set from creation; 
 * input[supplementalQuery].type = TAWorkflowCS#supplemental-query
 * input[supplementalQuery].valueString = "Observation?patient=3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90&code=http://loinc.org|8302-2"
 
+Instance: 948d41c4-820f-49ed-bbb7-c15e6d7fc699
+InstanceOf: TwiinCoordinationTask
+Usage: #example
+Title: "Coordination Task: single Fulfiller, awaiting information"
+Description: "The Fulfiller awaits information from the Placer (TA section Business status)."
+* identifier.system = "https://placer.example.org/task"
+* identifier.value = "948d41c4-820f-49ed-bbb7-c15e6d7fc699"
+* status = #accepted
+* code = $task-code#fulfill
+* businessStatus = TAWorkflowCS#awaiting-information
+* statusReason.text = "Referral letter is incomplete: the date of the last wound assessment is missing."
+* for = Reference(Patient/3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90)
+* insert CoordinationTaskBase
+* insert OwnerA
+* insert LocationA
+
 Instance: 5b9d3e7f-1a2c-4f6e-8d4b-9e2a7c1f3b56
 InstanceOf: TwiinCancellationRequestTask
 Usage: #example

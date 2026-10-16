@@ -12,6 +12,8 @@ Description: "Codes defined by TA Workflow for Task.code, Task.businessStatus, T
 * #type-of-work "Type of work" "The entry carries the type of work."
 * #supplemental-resource "Supplemental resource" "The entry refers, in valueReference, to one resource at the Placer that the Fulfiller may read beyond the standard dataset."
 * #supplemental-query "Supplemental query" "The entry carries, in valueString, a search relative to the FHIR base of the Placer that the Fulfiller may perform beyond the standard dataset."
+* #awaiting-information "Awaiting information" "The Fulfiller needs more information from the Placer to continue or to decide."
+* #visit-scheduled "Visit scheduled" "A visit with the patient is scheduled."
 
 ValueSet: TAWorkflowTaskCodeVS
 Id: ta-workflow-task-code
@@ -33,7 +35,9 @@ Description: "Codes for Task.statusReason of the Coordination Task under TA Work
 ValueSet: TAWorkflowBusinessStatusVS
 Id: ta-workflow-business-status
 Title: "TA Workflow Business Status"
-Description: "Codes for Task.businessStatus of the Coordination Task under TA Workflow. Extensible: a use case MAY define further values; selected is set by the Placer only."
+Description: "Codes for Task.businessStatus of the Coordination Task under TA Workflow (TA sections Business status; Codes of this TA). Extensible: a use case MAY define further codes. selected is reserved for the Placer."
 * ^status = #draft
 * ^experimental = false
 * TAWorkflowCS#selected
+* TAWorkflowCS#awaiting-information
+* TAWorkflowCS#visit-scheduled
