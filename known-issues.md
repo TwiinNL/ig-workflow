@@ -46,7 +46,13 @@ The CodeSystem `ta-workflow` and the ValueSets `ta-workflow-business-status`, `t
 
 ## Several versions of `hl7.terminology.r4`
 
-COW IG 1.0.0-ballot depends on `hl7.terminology.r4#6.2.0` and `hl7.fhir.uv.extensions.r4#5.2.0`; Notifications on 7.4.0 and 5.3.0. The publisher uses 7.4.0 and 5.3.0, the versions in this IG's own `dependsOn`, and also loads the older versions that dependencies bring. This gives warnings such as `There are multiple different potential matches for the url 'http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType'`. Not allowlisted; warnings do not fail the build.
+COW IG 1.0.0-ballot depends on `hl7.terminology.r4#6.2.0` and `hl7.fhir.uv.extensions.r4#5.2.0`; Notifications on 7.4.0 and 5.3.0. The publisher uses `hl7.terminology.r4#7.5.0` and `hl7.fhir.uv.extensions.r4#5.3.0` (the version in this IG's own `dependsOn`), and also loads the older versions that dependencies bring: for terminology 7.4.0, 7.1.0, 6.2.0 and 5.0.0, for the extensions 5.2.0. This gives warnings such as `There are multiple different potential matches for the url 'http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType'`. Not allowlisted; warnings do not fail the build.
+
+## Extensions Pack 5.3.0 is not the most recent version
+
+Applies to: IG Publisher 3.0.0, `hl7.fhir.uv.extensions.r4#5.3.0`. Not allowlisted; a warning, not an error.
+
+The publisher warns that `hl7.fhir.uv.extensions.r4#5.3.0` is not the most recent appropriate version, which is 5.4.0 (on `ImplementationGuide.dependsOn`). This is intentional: TA Workflow names FHIR Extensions Pack 5.3.0 as a base specification, so `sushi-config.yaml` pins the dependency to that version. Without the pin, SUSHI and the publisher resolve the latest version.
 
 ## Not fixed by `twiin.base.template#0.1.7`
 
