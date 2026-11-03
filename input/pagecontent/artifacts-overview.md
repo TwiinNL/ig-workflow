@@ -28,9 +28,10 @@ Some constraints interpret the TA:
 | `twiin-ct-1` | error | Coordination Task | The statuses draft, ready and on-hold are not used |
 | `twiin-ct-2` | error | Coordination Task | statusReason not-selected only when the status is cancelled |
 | `twiin-ct-3` | error | Coordination Task | businessStatus selected implies code fulfill and for populated |
-| `twiin-ct-5` | warning | Coordination Task | statusReason when the status is rejected or cancelled |
+| `twiin-ct-5` | warning | Coordination Task | statusReason when the status is cancelled |
 | `twiin-ct-6` | warning | Coordination Task | for.identifier is not populated |
 | `twiin-ct-7` | error | Coordination Task | status in-progress or completed implies code fulfill |
+| `twiin-ct-8` | error | Coordination Task | statusReason when the status is rejected or failed |
 | `twiin-crt-1` | error | Cancellation Request Task | status requested, accepted, rejected, cancelled or entered-in-error |
 | `twiin-acrt-1` | error | Authorization Cancellation Request Task | status requested, accepted or rejected |
 | `twiin-task-1` | warning | all Task profiles | statusReason.text when statusReason is populated |
@@ -68,5 +69,7 @@ The capability statement imports the Twiin Subscription Server of TA Notificatio
 | [Cancellation Request Task](Task-5b9d3e7f-1a2c-4f6e-8d4b-9e2a7c1f3b56.html) | Cancellation Request (After in-progress) |
 | [Authorization Cancellation Request Task](Task-9c4a1f8e-7d3b-4e2a-b6f9-3a8e5d2c7b14.html) | Cancellation by the Fulfiller |
 | [Subscription for a HealthcareService](Subscription-1e8b4c6d-3f7a-4b2e-9d5c-8a1f6e3b7c29.html) | Subscription |
+
+The page [Example: reselection](example-reselection.html) shows one scenario in the Multiple Fulfillers Pattern with its own instances. The page [Example: sharing additional content](example-sharing.html) shows how the Placer shares content in Task.input and how a candidate asks for information.
 
 The examples are not taken from the TA, which contains none. Hosts, identifiers, the topic URL and the ActivityDefinition URL are invented; the type of work uses SNOMED CT 308292007, which the TA names as the code of eOverdracht.
