@@ -21,6 +21,9 @@ dependencies:
   # twiin-workflow-subscription constrains its extensions and SUSHI does not load
   # transitive dependencies.
   hl7.fhir.uv.subscriptions-backport.r4: 1.1.0
+  # FHIR Extensions Pack version that TA Workflow names as a base specification. Without this,
+  # SUSHI and the publisher resolve the latest version.
+  hl7.fhir.uv.extensions.r4: 5.3.0
 
 parameters:
   pin-canonicals: pin-multiples
