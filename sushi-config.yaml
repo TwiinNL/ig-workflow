@@ -30,6 +30,10 @@ pages:
     title: Home
   artifacts-overview.md:
     title: Artifacts overview
+  example-reselection.md:
+    title: "Example: reselection"
+  example-sharing.md:
+    title: "Example: sharing additional content"
   requirements-not-in-artifacts.md:
     title: Requirements not expressed in artifacts
   installing-dependencies.md:

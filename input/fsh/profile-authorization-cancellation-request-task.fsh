@@ -19,6 +19,11 @@ Description: "Authorization Cancellation Request Task under TA Workflow, used by
 * owner.identifier 1..1
 * owner.identifier.system 1..1
 * owner.identifier.system = $ura
+* reasonCode 1..1 MS
+* reasonCode ^short = "The Fulfiller's reason for asking to withdraw the Request"
+* reasonCode ^definition = "The reason of the Fulfiller for asking the Placer to withdraw the Request."
+* statusReason ^short = "The Placer's reason for rejecting"
+* statusReason ^definition = "The reason of the Placer for rejecting the request to withdraw the Request."
 
 Invariant: twiin-acrt-1
 Description: "The status is requested, accepted or rejected."

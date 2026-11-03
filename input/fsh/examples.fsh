@@ -175,9 +175,9 @@ Instance: 9c4a1f8e-7d3b-4e2a-b6f9-3a8e5d2c7b14
 InstanceOf: TwiinAuthorizationCancellationRequestTask
 Usage: #example
 Title: "Authorization Cancellation Request Task"
-Description: "A Fulfiller asks the Placer to withdraw the Request (TA section Cancellation by the Fulfiller). requester identifies the Fulfiller and owner the Placer, each by its URA."
+Description: "A Fulfiller asks the Placer to withdraw the Request (TA section Cancellation by the Fulfiller). requester identifies the Fulfiller and owner the Placer, each by its URA. reasonCode carries the reason of the Fulfiller."
 * status = #requested
-* statusReason.text = "Contraindication found for the requested service"
+* reasonCode.text = "Contraindication found for the requested service"
 * intent = #proposal
 * code = $task-code#abort
 * focus = Reference(ServiceRequest/0b7c5d0e-6f3a-4c2b-9e1d-8a4f2c6b3d75)
