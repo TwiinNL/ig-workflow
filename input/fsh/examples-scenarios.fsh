@@ -5,6 +5,7 @@
 
 RuleSet: ScenarioTask(focus, identifier)
 * intent = #order
+* for = Reference(Patient/3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90)
 * focus = Reference(ServiceRequest/{focus})
 * identifier.system = "https://placer.example.org/task"
 * identifier.value = "{identifier}"
@@ -53,7 +54,7 @@ Instance: 5fe23d95-5f8d-4f9d-9315-7d7979153e2a
 InstanceOf: TwiinCoordinationTask
 Usage: #example
 Title: "Scenario 1, step 1: created"
-Description: "The Placer creates the Coordination Task with code fulfill and for set, and with the entries it makes available, since in the Single Fulfiller Pattern there is no selection."
+Description: "The Placer creates the Coordination Task with code fulfill, and with the entries it makes available, since in the Single Fulfiller Pattern there is no selection."
 * status = #requested
 * authoredOn = "2026-11-02T09:00:00+01:00"
 * insert ScenarioTask(c682d130-33be-4bd5-a2b5-6677aead5ad9, 12d4c5d1-e6cb-432f-b195-7a4dc2da47be)
@@ -129,7 +130,7 @@ Instance: 12e3afcc-3979-476c-bc59-8e8e4e40afb9
 InstanceOf: TwiinCoordinationTask
 Usage: #example
 Title: "Scenario 2, step 1: A accepted with a bid"
-Description: "Candidate A accepts its Coordination Task (code request-fulfillment, for empty) and records a bid in output."
+Description: "Candidate A accepts its Coordination Task (code request-fulfillment) and records a bid in output."
 * status = #accepted
 * code = TAWorkflowCS#request-fulfillment
 * lastModified = "2026-11-02T12:00:00+01:00"
@@ -141,7 +142,7 @@ Instance: 66bb48ed-2053-4fa4-ae26-4aba6ad37e5d
 InstanceOf: TwiinCoordinationTask
 Usage: #example
 Title: "Scenario 2, step 1: B accepted with a bid"
-Description: "Candidate B accepts its Coordination Task (code request-fulfillment, for empty) and records a bid in output."
+Description: "Candidate B accepts its Coordination Task (code request-fulfillment) and records a bid in output."
 * status = #accepted
 * code = TAWorkflowCS#request-fulfillment
 * lastModified = "2026-11-02T12:20:00+01:00"
@@ -153,7 +154,7 @@ Instance: 5932fe26-950a-481f-8fc3-fa792e1d318f
 InstanceOf: TwiinCoordinationTask
 Usage: #example
 Title: "Scenario 2, step 2: A selected"
-Description: "The Placer selects A: businessStatus selected, code fulfill and for set in one update, together with the entries with type available-resource and available-query that it makes available."
+Description: "The Placer selects A: businessStatus selected, code fulfill set in one update, together with the entries with type available-resource and available-query that it makes available."
 * status = #accepted
 * businessStatus = TAWorkflowCS#selected
 * code = $task-code#fulfill

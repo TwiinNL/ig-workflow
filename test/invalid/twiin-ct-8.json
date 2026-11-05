@@ -94,5 +94,8 @@
   "focus": {
     "reference": "ServiceRequest/0b7c5d0e-6f3a-4c2b-9e1d-8a4f2c6b3d75"
   },
-  "authoredOn": "2026-10-09T09:00:00+02:00"
+  "authoredOn": "2026-10-09T09:00:00+02:00",
+  "for": {
+    "reference": "Patient/3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90"
+  }
 }

@@ -36,6 +36,7 @@ RuleSet: TypeOfWork
 
 RuleSet: CoordinationTaskBase
 * intent = #order
+* for = Reference(Patient/3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90)
 * focus = Reference(ServiceRequest/0b7c5d0e-6f3a-4c2b-9e1d-8a4f2c6b3d75)
 * authoredOn = "2026-10-09T09:00:00+02:00"
 * insert PlacerRequester
@@ -78,7 +79,7 @@ Instance: 6d2e9f41-8b3c-4a7d-b5e2-1c9f7a3d8e64
 InstanceOf: TwiinCoordinationTask
 Usage: #example
 Title: "Coordination Task: candidate invited"
-Description: "A bidding task in the Multiple Fulfillers Pattern before selection: code request-fulfillment, for empty (TA sections Multiple Fulfillers Pattern; Patient context and readability). Task.input also carries a non-identifying entry with its content inline, as allowed before selection (TA sections Sharing additional content; Patient context and readability)."
+Description: "A bidding task in the Multiple Fulfillers Pattern before selection: code request-fulfillment (TA sections Multiple Fulfillers Pattern; Patient context and readability). Task.input also carries a non-identifying entry with its content inline, as allowed before selection (TA sections Sharing additional content; Patient context and readability)."
 * identifier.system = "https://placer.example.org/task"
 * identifier.value = "6d2e9f41-8b3c-4a7d-b5e2-1c9f7a3d8e64"
 * status = #requested
@@ -93,7 +94,7 @@ Instance: a41c7e2b-5f9d-4e3a-8c6b-2d7f1e9a5b38
 InstanceOf: TwiinCoordinationTask
 Usage: #example
 Title: "Coordination Task: candidate selected"
-Description: "The Coordination Task of the selected candidate: businessStatus selected, code fulfill and for set in the same update (TA sections Multiple Fulfillers Pattern; Patient context and readability). The candidate had accepted and recorded a bid in output."
+Description: "The Coordination Task of the selected candidate: businessStatus selected, code fulfill set in the same update (TA sections Multiple Fulfillers Pattern; Patient context and readability). The candidate had accepted and recorded a bid in output."
 * identifier.system = "https://placer.example.org/task"
 * identifier.value = "a41c7e2b-5f9d-4e3a-8c6b-2d7f1e9a5b38"
 * status = #accepted
@@ -125,7 +126,7 @@ Instance: e2f7a9c1-4d6b-4b8e-9a3f-6c1d5e8b2a47
 InstanceOf: TwiinCoordinationTask
 Usage: #example
 Title: "Coordination Task: single Fulfiller, in progress"
-Description: "Single Fulfiller Pattern: code fulfill and for set from creation; the Fulfiller has started the work. Task.input also carries an available-resource and an available-query entry (TA sections Single Fulfiller Pattern; Sharing additional content)."
+Description: "Single Fulfiller Pattern: code fulfill from creation; the Fulfiller has started the work. Task.input also carries an available-resource and an available-query entry (TA sections Single Fulfiller Pattern; Sharing additional content)."
 * identifier.system = "https://placer.example.org/task"
 * identifier.value = "e2f7a9c1-4d6b-4b8e-9a3f-6c1d5e8b2a47"
 * status = #in-progress
