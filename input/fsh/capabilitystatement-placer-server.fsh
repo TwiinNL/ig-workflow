@@ -30,7 +30,7 @@ Description: "Requirements for the FHIR server of the Placer under TA Workflow (
 * patchFormat[0].extension[0].url = $exp
 * patchFormat[0].extension[0].valueCode = #SHALL
 * rest[0].mode = #server
-* rest[0].documentation = "Subscription: see the imported Twiin Subscription Server (TA Notifications). Task, ServiceRequest and Patient: TA section Placer server capabilities."
+* rest[0].documentation = "Subscription: see the imported Twiin Subscription Server (TA Notifications). Task, ServiceRequest and Patient: TA section Placer server capabilities. The server supports the reads and searches behind the entries with type available-resource and available-query that the Placer puts in Task.input; it is not required to support the searches of a standard dataset itself."
 // Task
 * rest[0].resource[0].type = #Task
 * rest[0].resource[0] insert Expect(SHALL)
@@ -67,6 +67,8 @@ Description: "Requirements for the FHIR server of the Placer under TA Workflow (
 * rest[0].resource[0].searchParam[6].documentation = "TA section Placer server capabilities."
 * insert TaskSearch(7, _lastUpdated, date, http://hl7.org/fhir/SearchParameter/Resource-lastUpdated)
 * rest[0].resource[0].searchParam[7].documentation = "TA section Resynchronization."
+* insert TaskSearch(8, owner-assigner, token, https://fhir.twiin.nl/ig/workflow/SearchParameter/owner-assigner)
+* rest[0].resource[0].searchParam[8].documentation = "Value `[system]|[value]` with the URA of the organization that provides the HealthcareService in Task.owner (TA sections Search parameters; Subscription)."
 // ServiceRequest
 * rest[0].resource[1].type = #ServiceRequest
 * rest[0].resource[1] insert Expect(SHALL)

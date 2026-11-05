@@ -8,12 +8,13 @@ Description: "Codes defined by TA Workflow for Task.code, Task.businessStatus, T
 * ^caseSensitive = true
 * #request-fulfillment "Request fulfillment" "The Multiple Fulfillers Pattern applies and no candidate has been selected yet; the owner is invited to accept and, optionally, to bid, and may not yet start the work."
 * #selected "Selected" "The Placer has selected the owner of this Task as the Fulfiller."
-* #not-selected "Not selected" "The Placer has selected another candidate; the Coordination Task of this candidate is cancelled."
-* #type-of-work "Type of work" "The entry carries the type of work."
-* #supplemental-resource "Supplemental resource" "The entry refers, in valueReference, to one resource at the Placer that the Fulfiller may read beyond the standard dataset."
-* #supplemental-query "Supplemental query" "The entry carries, in valueString, a search relative to the FHIR base of the Placer that the Fulfiller may perform beyond the standard dataset."
 * #awaiting-information "Awaiting information" "The Fulfiller needs more information from the Placer to continue or to decide."
 * #visit-scheduled "Visit scheduled" "A visit with the patient is scheduled."
+* #not-selected "Not selected" "The Placer has selected another candidate; the Coordination Task of this candidate is cancelled."
+* #type-of-work "Type of work" "The entry carries the type of work."
+* #available-resource "Available resource" "The entry refers, in valueReference, to one resource at the Placer that the Placer makes available to the Fulfiller."
+* #available-query "Available query" "The entry carries, in valueString, a search relative to the FHIR base of the Placer that the Placer makes available to the Fulfiller."
+* #information-request "Information request" "The entry carries, in the entry itself, a request from the Fulfiller for information it needs from the Placer."
 
 ValueSet: TAWorkflowTaskCodeVS
 Id: ta-workflow-task-code

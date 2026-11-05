@@ -52,7 +52,7 @@
       "type": {
         "coding": [
           {
-            "code": "supplemental-resource",
+            "code": "available-resource",
             "system": "https://fhir.twiin.nl/ig/workflow/CodeSystem/ta-workflow"
           }
         ]
@@ -65,7 +65,7 @@
       "type": {
         "coding": [
           {
-            "code": "supplemental-query",
+            "code": "available-query",
             "system": "https://fhir.twiin.nl/ig/workflow/CodeSystem/ta-workflow"
           }
         ]
