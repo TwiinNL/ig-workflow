@@ -124,7 +124,7 @@ Instance: e2f7a9c1-4d6b-4b8e-9a3f-6c1d5e8b2a47
 InstanceOf: TwiinCoordinationTask
 Usage: #example
 Title: "Coordination Task: single Fulfiller, in progress"
-Description: "Single Fulfiller Pattern: code fulfill and for set from creation; the Fulfiller has started the work. Task.input also carries a supplemental-resource and a supplemental-query entry (TA sections Single Fulfiller Pattern; Sharing additional content)."
+Description: "Single Fulfiller Pattern: code fulfill and for set from creation; the Fulfiller has started the work. Task.input also carries an available-resource and an available-query entry (TA sections Single Fulfiller Pattern; Sharing additional content)."
 * identifier.system = "https://placer.example.org/task"
 * identifier.value = "e2f7a9c1-4d6b-4b8e-9a3f-6c1d5e8b2a47"
 * status = #in-progress
@@ -134,10 +134,10 @@ Description: "Single Fulfiller Pattern: code fulfill and for set from creation; 
 * insert OwnerA
 * insert LocationA
 * executionPeriod.start = "2026-10-12T08:00:00+02:00"
-* input[supplementalResource].type = TAWorkflowCS#supplemental-resource
-* input[supplementalResource].valueReference = Reference(Patient/3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90)
-* input[supplementalQuery].type = TAWorkflowCS#supplemental-query
-* input[supplementalQuery].valueString = "Observation?patient=3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90&code=http://loinc.org|8302-2"
+* input[availableResource].type = TAWorkflowCS#available-resource
+* input[availableResource].valueReference = Reference(Patient/3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90)
+* input[availableQuery].type = TAWorkflowCS#available-query
+* input[availableQuery].valueString = "Observation?patient=3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90&code=http://loinc.org|8302-2"
 
 Instance: 948d41c4-820f-49ed-bbb7-c15e6d7fc699
 InstanceOf: TwiinCoordinationTask

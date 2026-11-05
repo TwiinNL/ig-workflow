@@ -5,7 +5,7 @@ Title: "Twiin Coordination Task"
 Description: "Coordination Task under TA Workflow (TA sections Summary of the profiles → Coordination Task; Coordination Task; Status of the Coordination Task; Patient context and readability; Type of work on the Task; Sharing additional content; Search parameters; Codes of this TA)."
 * ^status = #draft
 * ^experimental = false
-* obeys twiin-ct-1 and twiin-ct-2 and twiin-ct-3 and twiin-ct-5 and twiin-ct-6 and twiin-ct-7 and twiin-ct-8 and twiin-task-1
+* obeys twiin-ct-1 and twiin-ct-2 and twiin-ct-3 and twiin-ct-5 and twiin-ct-6 and twiin-ct-7 and twiin-ct-8 and twiin-ct-9 and twiin-task-1
 * intent = #order
 * code from TAWorkflowTaskCodeVS (required)
 * statusReason from TAWorkflowStatusReasonVS (extensible)
@@ -33,11 +33,21 @@ Description: "Coordination Task under TA Workflow (TA sections Summary of the pr
 * location.identifier.assigner.identifier.system 1..1
 * location.identifier.assigner.identifier.value 1..1
 * insert TypeOfWorkInput
-* input contains supplementalResource 0..* and supplementalQuery 0..*
-* input[supplementalResource].type = TAWorkflowCS#supplemental-resource
-* input[supplementalResource].value[x] only Reference
-* input[supplementalQuery].type = TAWorkflowCS#supplemental-query
-* input[supplementalQuery].value[x] only string
+* input ^comment = "The Placer sets all entries of input, except the entries with type information-request: the Fulfiller MAY add and remove those, and only the Fulfiller sets them (TA section Write access)."
+* input contains availableResource 0..* and availableQuery 0..* and informationRequest 0..*
+* input[availableResource].type = TAWorkflowCS#available-resource
+* input[availableResource].value[x] only Reference
+* input[availableResource] ^short = "A resource at the Placer that the Placer makes available to the Fulfiller"
+* input[availableQuery].type = TAWorkflowCS#available-query
+* input[availableQuery].value[x] only string
+* input[availableQuery] ^short = "A search, relative to the FHIR base of the Placer, that the Placer makes available to the Fulfiller"
+* input[informationRequest].type = TAWorkflowCS#information-request
+* input[informationRequest] ^short = "A request from the Fulfiller for information it needs from the Placer; reserved for the Fulfiller"
+* input[informationRequest] ^comment = "The type information-request is reserved for the Fulfiller, which MAY add and remove such entries (TA section Write access)."
+* status ^comment = "The Fulfiller MAY change only status, businessStatus, statusReason, executionPeriod, lastModified and output, and MAY add and remove entries of input with type information-request (TA section Write access). The Placer sets cancelled only before in-progress; after in-progress the Fulfiller sets cancelled after accepting a Cancellation Request Task (TA sections Status of the Coordination Task; After an accepted Cancellation Request)."
+* statusReason ^short = "Reason for the status; required for rejected, failed and awaiting-information"
+* statusReason ^comment = "SHALL be present when status is rejected or failed (twiin-ct-8), and SHALL be present with statusReason.text when businessStatus is awaiting-information (twiin-ct-9). SHOULD be present when status is cancelled (twiin-ct-5). not-selected is reserved for the Placer."
+* executionPeriod ^comment = "executionPeriod.end is set when status moves from in-progress to completed, failed or cancelled."
 
 Invariant: twiin-ct-1
 Description: "The statuses draft, ready and on-hold are not used (TA section Status of the Coordination Task)."
@@ -72,4 +82,9 @@ Severity: #error
 Invariant: twiin-ct-8
 Description: "statusReason is populated when the status is rejected or failed (TA sections Handling the End of a Coordination Task; Status of the Coordination Task)."
 Expression: "(status = 'rejected' or status = 'failed') implies statusReason.exists()"
+Severity: #error
+
+Invariant: twiin-ct-9
+Description: "statusReason with statusReason.text is populated when businessStatus is awaiting-information (TA sections Business status; Summary of the profiles → Coordination Task)."
+Expression: "businessStatus.coding.where(system = 'https://fhir.twiin.nl/ig/workflow/CodeSystem/ta-workflow' and code = 'awaiting-information').exists() implies statusReason.text.exists()"
 Severity: #error

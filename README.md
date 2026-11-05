@@ -1,11 +1,11 @@
 # ig-workflow
 
-FHIR R4 implementation guide for the technical specification of TA Workflow, part of the technical core of the Twiin Afsprakenstelsel (TA Workflow 0.3 (draft)).
+FHIR R4 implementation guide for the technical specification of TA Workflow, part of the technical core of the Twiin Afsprakenstelsel (TA Workflow 0.4 (draft)).
 
 - Package id: `nl.twiin.fhir.r4.workflow`
 - Canonical: https://fhir.twiin.nl/ig/workflow
 - FHIR version: 4.0.1
-- Version: 0.3.0-draft (working release, see [Release 0.3.0-draft](#release-030-draft))
+- Version: 0.4.0-draft (working release, see [Release 0.4.0-draft](#release-040-draft))
 - Publisher: Twiin
 - Dependencies: `hl7.fhir.uv.cow#1.0.0-ballot`, `nl.twiin.fhir.r4.notifications#0.2.0-draft`, and, because SUSHI needs it, `hl7.fhir.uv.subscriptions-backport.r4#1.1.0` (see [known-issues.md](known-issues.md))
 
@@ -17,17 +17,36 @@ Built with [SUSHI](https://fshschool.org/docs/sushi/) and the HL7 IG Publisher.
 - Once this IG depends on the Subscriptions R5 Backport IG (`hl7.fhir.uv.subscriptions-backport.r4`), the version must equal the one in `nl.twiin.fhir.r4.notifications`, as long as this IG does not depend on Notifications.
 - Add a dependency only when an artifact refers to that package.
 
-## Release 0.3.0-draft
+## Release 0.4.0-draft
 
-The publication of `0.3.0-draft` is a working release (`mode: working` in `publication-request.json`, `first: false`), not a milestone. The reason is the same as for the earlier draft publications: IG Publisher 3.0.0 crashes on a milestone publication: `IGReleaseRedirectionBuilder` requires its folder to be inside the website root, but `-go-publish` passes the milestone build output, which is outside it. Fixed upstream in [HL7/fhir-ig-publisher d64c08c](https://github.com/HL7/fhir-ig-publisher/commit/d64c08c) (8 October 2026), not yet in a release. See [known-issues.md](known-issues.md).
+The publication of `0.4.0-draft` is a working release (`mode: working` in `publication-request.json`, `first: false`), not a milestone. The reason is the same as for the earlier draft publications: IG Publisher 3.0.0 crashes on a milestone publication: `IGReleaseRedirectionBuilder` requires its folder to be inside the website root, but `-go-publish` passes the milestone build output, which is outside it. Fixed upstream in [HL7/fhir-ig-publisher d64c08c](https://github.com/HL7/fhir-ig-publisher/commit/d64c08c) (8 October 2026), not yet in a release. See [known-issues.md](known-issues.md).
 
-Consequence of a working release: only `https://fhir.twiin.nl/ig/workflow/0.3.0-draft/` holds the IG; the root of the canonical holds no copy and no redirects, and no version is marked current. `0.1.0-draft` was removed from the site after `0.1.1-draft` was published ([TwiinNL/fhir#9](https://github.com/TwiinNL/fhir/pull/9)); the git tag `v0.1.0-draft` remains. Releases before 1.0.0 are published as -draft working releases; a milestone release follows at 1.0.0.
+Consequence of a working release: each published version holds the IG at its own path, here `https://fhir.twiin.nl/ig/workflow/0.4.0-draft/` next to the unchanged `0.3.0-draft/`; the root of the canonical holds no copy and no redirects, and no version is marked current. `0.1.0-draft` was removed from the site after `0.1.1-draft` was published ([TwiinNL/fhir#9](https://github.com/TwiinNL/fhir/pull/9)); the git tag `v0.1.0-draft` remains. Releases before 1.0.0 are published as -draft working releases; a milestone release follows at 1.0.0.
 
-The IG refers to "TA Workflow 0.3 (draft)" in `index.md` and this README, without a link.
+The IG refers to "TA Workflow 0.4 (draft)" in `index.md` and this README, without a link.
 
-- TODO: link "TA Workflow 0.3" in `index.md` and this README in a patch release, once 0.3 is published.
+- TODO: link "TA Workflow 0.4" in `index.md` and this README in a patch release, once 0.4 is published.
 
-`releaseLabel` is "Draft – normative only when referenced by the Twiin afsprakenstelsel". `publication-request.json` is for the publication of `0.3.0-draft` (the package-list of the IG must exist at the canonical); publishing itself (`-go-publish`) is a separate step.
+### Changes in 0.4.0-draft
+
+`0.4.0-draft` is the technical specification of TA Workflow 0.4. Changes since `0.3.0-draft`:
+
+- Task.input types `supplemental-resource` and `supplemental-query` renamed to `available-resource` and `available-query` (slices `availableResource`, `availableQuery`). A standard dataset (the Library of the ActivityDefinition or PlanDefinition in `ServiceRequest.instantiatesCanonical`) is a guideline, not a requirement: the Placer states per Request what it makes available in these entries, and its server supports the reads and searches behind them, not the searches of the dataset itself.
+- New code `information-request` (nine codes in `ta-workflow`) and slice `informationRequest` (0..*) on the Coordination Task. The Fulfiller may add and remove such entries; the type is reserved for the Fulfiller.
+- New search parameter `owner-assigner` (Task.owner.identifier.assigner.identifier), in the CapabilityStatement of the Placer's server. Subscriptions per organization: filter `owner-assigner=[system]|[value]` next to `owner:identifier`, `channel.endpoint` 1..1 and from `Organization.endpoint` for such a Subscription; `twiin-wsub-1` accepts both forms.
+- After an accepted Cancellation Request the Coordination Task ends as `cancelled` instead of `failed`; the Fulfiller sets it. The Placer sets `cancelled` only before `in-progress`.
+- `statusReason`: new invariant `twiin-ct-9` (`statusReason.text` when `businessStatus` is `awaiting-information`), next to `twiin-ct-8` (rejected, failed) and `twiin-ct-5` (SHOULD on cancelled). `executionPeriod.end` is set when the status leaves `in-progress`.
+- `ServiceRequest.priority` mustSupport with guidance; Task.priority is not used.
+- A candidate may read the Request from the creation of its Coordination Task; read access to the Patient follows Task.code `fulfill`, not `businessStatus` `selected`.
+- New page [Example scenarios](input/pagecontent/example-scenarios.md) with seven scenarios and a Subscription example per filter form.
+
+- New examples: deselecting a selected Fulfiller before in-progress and soliciting again on the same Request ([Example: reselection](input/pagecontent/example-reselection.md)); sharing additional content before and after selection ([Example: sharing additional content](input/pagecontent/example-sharing.md)).
+- Cancellation Request Task and Authorization Cancellation Request Task: `reasonCode` for the requesting party's reason (1..1 on the latter); `statusReason` carries only the answering party's reason. The existing Authorization Cancellation Request Task example moves the Fulfiller's reason to `reasonCode.text`.
+- Coordination Task: invariant `twiin-ct-8` (`statusReason` required when the status is rejected or failed); `twiin-ct-5` now covers the status cancelled only.
+- Template `twiin.base.template` 0.1.7 (was 0.1.6). `0.3.0-draft` is published unchanged and keeps its template.
+- Package lock: `hl7.terminology` 7.5.0; `hl7.fhir.uv.extensions.r4` pinned to 5.3.0, as TA Workflow names it as a base specification (see [known-issues.md](known-issues.md)).
+
+`releaseLabel` is "Draft – normative only when referenced by the Twiin afsprakenstelsel". `publication-request.json` is for the publication of `0.4.0-draft` (the package-list of the IG must exist at the canonical); publishing itself (`-go-publish`) is a separate step.
 
 Two dependencies are not on the FHIR package registry; see the page [Installing dependencies](input/pagecontent/installing-dependencies.md).
 

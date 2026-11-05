@@ -7,7 +7,7 @@ This page is informative. It lists the artifacts in this guide and the section o
 | [Twiin Coordination Task](StructureDefinition-twiin-coordination-task.html) | `coordination-task` (COW IG 1.0.0-ballot) | Summary of the profiles → Coordination Task; Coordination Task; Status of the Coordination Task; Patient context and readability; Type of work on the Task; Sharing additional content; Search parameters |
 | [Twiin Cancellation Request Task](StructureDefinition-twiin-cancellation-request-task.html) | `cancellation-request-task` (COW IG 1.0.0-ballot) | Summary of the profiles → Cancellation Request Task; Cancellation Request Task |
 | [Twiin Authorization Cancellation Request Task](StructureDefinition-twiin-authorization-cancellation-request-task.html) | `Task` (FHIR R4) | Summary of the profiles → Authorization Cancellation Request Task; Cancellation by the Fulfiller |
-| [Twiin Workflow ServiceRequest](StructureDefinition-twiin-workflow-servicerequest.html) | `ServiceRequest` (FHIR R4) | Summary of the profiles → ServiceRequest; Request; Patient context and readability |
+| [Twiin Workflow ServiceRequest](StructureDefinition-twiin-workflow-servicerequest.html) | `ServiceRequest` (FHIR R4) | Summary of the profiles → ServiceRequest; Request; Patient context and readability. `priority` is mustSupport. |
 | [Twiin Workflow Subscription](StructureDefinition-twiin-workflow-subscription.html) | `twiin-subscription` (Twiin Notifications 0.2.0-draft) | Subscription |
 
 Task.owner and Task.location refer to a HealthcareService and a Location, with the type and a complete identifier (system, value and the identifier of its assigner) required. That they are profiled by GF Addressing is not expressed in the artifacts of this guide (see [Requirements not expressed in artifacts](requirements-not-in-artifacts.html)). The invariant `twiin-aid-1` excludes an assigner identified by a KvK number; the URA system of the assigner is not fixed in this guide.
@@ -17,8 +17,8 @@ COW IG defines no profile for the Authorization Cancellation Request Task. Its r
 Some constraints interpret the TA:
 
 - Task.code of the Authorization Cancellation Request Task ("fixed to abort") and Task.input.type are expressed as patterns, as COW IG does for the Cancellation Request Task.
-- The entries with type `supplemental-resource` and `supplemental-query` on the Coordination Task are optional slices that fix the value type (TA section Sharing additional content).
-- `twiin-wsub-1` checks the form `owner:identifier=[system]|[value]` of the filter; it cannot check that the identifier is that of a HealthcareService.
+- The entries with type `available-resource` and `available-query` on the Coordination Task are optional slices that fix the value type (TA section Sharing additional content). The slice `informationRequest` (type `information-request`) does not constrain `value[x]`, since the TA does not fix the form of the request.
+- `twiin-wsub-1` checks the form `owner:identifier=[system]|[value]` or `owner-assigner=[system]|[value]` of the filter; it cannot check that the identifier is that of a HealthcareService or the URA of an organization.
 - `twiin-task-1` (statusReason.text when statusReason is populated) applies to all three Task profiles, as in the three tables of the TA.
 
 ### Invariants
@@ -32,12 +32,13 @@ Some constraints interpret the TA:
 | `twiin-ct-6` | warning | Coordination Task | for.identifier is not populated |
 | `twiin-ct-7` | error | Coordination Task | status in-progress or completed implies code fulfill |
 | `twiin-ct-8` | error | Coordination Task | statusReason when the status is rejected or failed |
+| `twiin-ct-9` | error | Coordination Task | statusReason.text when businessStatus is awaiting-information |
 | `twiin-crt-1` | error | Cancellation Request Task | status requested, accepted, rejected, cancelled or entered-in-error |
 | `twiin-acrt-1` | error | Authorization Cancellation Request Task | status requested, accepted or rejected |
 | `twiin-task-1` | warning | all Task profiles | statusReason.text when statusReason is populated |
 | `twiin-aid-1` | error | Coordination Task, Cancellation Request Task | The assigner of the identifier of a HealthcareService or Location is not a KvK number |
 | `twiin-sr-1` | error | ServiceRequest | subject is not masked with data-absent-reason |
-| `twiin-wsub-1` | error | Subscription | Filter of the form `owner:identifier=[system]|[value]` |
+| `twiin-wsub-1` | error | Subscription | Filter of the form `owner:identifier=[system]|[value]` or `owner-assigner=[system]|[value]` |
 
 ### Terminology
 
@@ -45,6 +46,12 @@ Some constraints interpret the TA:
 |---|---|
 | [TA Workflow Codes](CodeSystem-ta-workflow.html) | Codes of this TA |
 | [TA Workflow Task Code](ValueSet-ta-workflow-task-code.html) | Codes of this TA |
+
+### Search parameter
+
+| Artifact | TA section |
+|---|---|
+| [Task owner-assigner](SearchParameter-owner-assigner.html) | Search parameters; Subscription |
 
 ### Capability statement
 
@@ -70,6 +77,6 @@ The capability statement imports the Twiin Subscription Server of TA Notificatio
 | [Authorization Cancellation Request Task](Task-9c4a1f8e-7d3b-4e2a-b6f9-3a8e5d2c7b14.html) | Cancellation by the Fulfiller |
 | [Subscription for a HealthcareService](Subscription-1e8b4c6d-3f7a-4b2e-9d5c-8a1f6e3b7c29.html) | Subscription |
 
-The page [Example: reselection](example-reselection.html) shows one scenario in the Multiple Fulfillers Pattern with its own instances. The page [Example: sharing additional content](example-sharing.html) shows how the Placer shares content in Task.input and how a candidate asks for information.
+The page [Example scenarios](example-scenarios.html) shows the main scenarios with their own instances. The page [Example: reselection](example-reselection.html) shows one scenario in the Multiple Fulfillers Pattern with its own instances. The page [Example: sharing additional content](example-sharing.html) shows how the Placer shares content in Task.input and how a candidate asks for information.
 
 The examples are not taken from the TA, which contains none. Hosts, identifiers, the topic URL and the ActivityDefinition URL are invented; the type of work uses SNOMED CT 308292007, which the TA names as the code of eOverdracht.
