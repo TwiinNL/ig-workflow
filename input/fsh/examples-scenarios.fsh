@@ -396,7 +396,7 @@ Description: "Subscription for all HealthcareServices of Fulfiller A, also those
 * reason = "Coordination Tasks for all HealthcareServices of the organization with URA 87654321"
 * criteria = "https://example.org/fhir/SubscriptionTopic/transfer-of-care"
 * criteria.extension[filterCriteria].url = $filter
-* criteria.extension[filterCriteria].valueString = "owner-assigner=urn:oid:2.16.528.1.1007.3.3|87654321"
+* criteria.extension[filterCriteria].valueString = "owner-assigner=http://fhir.nl/fhir/NamingSystem/ura|87654321"
 * channel.type = #rest-hook
 * channel.endpoint = "https://fulfiller-a.example.org/fhir/notifications/organization"
 * channel.extension[heartbeatPeriod].url = $heartbeat

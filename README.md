@@ -29,7 +29,7 @@ The IG refers to "TA Workflow 0.4 (draft)" in `index.md` and this README, withou
 
 ### Changes in 0.4.0-draft
 
-`0.4.0-draft` is the technical specification of TA Workflow 0.4. Changes since `0.3.0-draft`:
+`0.4.0-draft` is the technical specification of TA Workflow 0.4. The release notes of all versions are on the page [Changes](input/pagecontent/changes.md); the list below is the same as there. Changes since `0.3.0-draft`:
 
 - Task.input types `supplemental-resource` and `supplemental-query` renamed to `available-resource` and `available-query` (slices `availableResource`, `availableQuery`). A standard dataset (the Library of the ActivityDefinition or PlanDefinition in `ServiceRequest.instantiatesCanonical`) is a guideline, not a requirement: the Placer states per Request what it makes available in these entries, and its server supports the reads and searches behind them, not the searches of the dataset itself.
 - New code `information-request` (nine codes in `ta-workflow`) and slice `informationRequest` (0..*) on the Coordination Task. The Fulfiller may add and remove such entries; the type is reserved for the Fulfiller.
@@ -39,12 +39,12 @@ The IG refers to "TA Workflow 0.4 (draft)" in `index.md` and this README, withou
 - `ServiceRequest.priority` mustSupport with guidance; Task.priority is not used.
 - A candidate may read the Request from the creation of its Coordination Task; read access to the Patient follows Task.code `fulfill`, not `businessStatus` `selected`.
 - New page [Example scenarios](input/pagecontent/example-scenarios.md) with seven scenarios and a Subscription example per filter form.
-
 - New examples: deselecting a selected Fulfiller before in-progress and soliciting again on the same Request ([Example: reselection](input/pagecontent/example-reselection.md)); sharing additional content before and after selection ([Example: sharing additional content](input/pagecontent/example-sharing.md)).
 - Cancellation Request Task and Authorization Cancellation Request Task: `reasonCode` for the requesting party's reason (1..1 on the latter); `statusReason` carries only the answering party's reason. The existing Authorization Cancellation Request Task example moves the Fulfiller's reason to `reasonCode.text`.
 - Coordination Task: invariant `twiin-ct-8` (`statusReason` required when the status is rejected or failed); `twiin-ct-5` now covers the status cancelled only.
 - Template `twiin.base.template` 0.1.7 (was 0.1.6). `0.3.0-draft` is published unchanged and keeps its template.
 - Package lock: `hl7.terminology` 7.5.0; `hl7.fhir.uv.extensions.r4` pinned to 5.3.0, as TA Workflow names it as a base specification (see [known-issues.md](known-issues.md)).
+- Correction: the URA is identified with the system `http://fhir.nl/fhir/NamingSystem/ura` everywhere, also on the assigner of the identifiers of HealthcareService and Location (as GF Addressing does) and in the `owner-assigner` Subscription example. The examples and test fixtures used the OID `urn:oid:2.16.528.1.1007.3.3` for the assigner. Republished as 0.4.0-draft.
 
 `releaseLabel` is "Draft – normative only when referenced by the Twiin afsprakenstelsel". `publication-request.json` is for the publication of `0.4.0-draft` (the package-list of the IG must exist at the canonical); publishing itself (`-go-publish`) is a separate step.
 

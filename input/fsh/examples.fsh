@@ -4,13 +4,14 @@ Alias: $content = http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinit
 Alias: $heartbeat = http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-heartbeat-period
 
 // Identifier from the AssignedId slice of NL-GF-HealthcareService or NL-GF-Location, with a URA
-// assigner as GF Addressing prescribes (system urn:oid:2.16.528.1.1007.3.3).
+// assigner as GF Addressing prescribes (system http://fhir.nl/fhir/NamingSystem/ura, the same
+// system as for Task.requester).
 RuleSet: AssignedId(path, system, value, ura)
 * {path}.use = #official
 * {path}.system = "{system}"
 * {path}.value = "{value}"
 * {path}.assigner.identifier.type = http://terminology.hl7.org/CodeSystem/provenance-participant-type#custodian
-* {path}.assigner.identifier.system = "urn:oid:2.16.528.1.1007.3.3"
+* {path}.assigner.identifier.system = "http://fhir.nl/fhir/NamingSystem/ura"
 * {path}.assigner.identifier.value = "{ura}"
 
 RuleSet: PlacerRequester
