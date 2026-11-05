@@ -27,7 +27,7 @@ Some constraints interpret the TA:
 |---|---|---|---|
 | `twiin-ct-1` | error | Coordination Task | The statuses draft, ready and on-hold are not used |
 | `twiin-ct-2` | error | Coordination Task | statusReason not-selected only when the status is cancelled |
-| `twiin-ct-3` | error | Coordination Task | businessStatus selected implies code fulfill and for populated |
+| `twiin-ct-3` | error | Coordination Task | businessStatus selected implies code fulfill |
 | `twiin-ct-5` | warning | Coordination Task | statusReason when the status is cancelled |
 | `twiin-ct-6` | warning | Coordination Task | for.identifier is not populated |
 | `twiin-ct-7` | error | Coordination Task | status in-progress or completed implies code fulfill |

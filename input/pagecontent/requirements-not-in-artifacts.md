@@ -18,7 +18,7 @@ This page is informative. Many requirements of TA Workflow concern behaviour, ac
 | ServiceRequest.code carries the code of the ActivityDefinition to which ServiceRequest.instantiatesCanonical refers, where that ActivityDefinition has a code | Request |
 | Read access: a candidate may read the Request from the creation of its Coordination Task; read access to the Patient follows Task.code fulfill (not businessStatus selected), unless the use case identifies the patient to candidates before selection; read access is withdrawn when the Placer cancels the candidate's Coordination Task | Patient context and readability |
 | Until selection, no data that directly identifies the patient in the Request, and no information that identifies the patient elsewhere, unless the use case identifies the patient to candidates before selection | Patient context and readability; Sharing additional content |
-| Task.for is empty while Task.code is request-fulfillment, unless the use case identifies the patient to candidates before selection | Patient context and readability |
+| Task.for refers to the same Patient as ServiceRequest.subject. That it is set at creation and uses Reference.reference is in the profile (for 1..1, for.reference 1..1); the selection does not set it | Patient context and readability |
 | Cancellation Request Task only when the Coordination Task is in-progress | Cancellation Request Task |
 | Same owner and type of work on a Cancellation Request Task as on its Coordination Task | Summary of the profiles → Cancellation Request Task; Cancellation Request Task; Type of work on the Task |
 | Coordination Task to cancelled (not failed) after an accepted Cancellation Request Task | After an accepted Cancellation Request |

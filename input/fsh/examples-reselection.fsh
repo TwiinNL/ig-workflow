@@ -10,11 +10,12 @@ RuleSet: OwnerC
 
 RuleSet: ReselectionTaskBase(focus)
 * intent = #order
+* for = Reference(Patient/3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90)
 * focus = Reference(ServiceRequest/{focus})
 * insert PlacerRequester
 * insert TypeOfWork
 
-// code fulfill, businessStatus selected and for are set in the same update (twiin-ct-3).
+// code fulfill and businessStatus selected are set in the same update (twiin-ct-3).
 RuleSet: ReselectionSelected
 * status = #accepted
 * businessStatus = TAWorkflowCS#selected
@@ -79,7 +80,7 @@ Instance: f8f11d4a-2339-4ef3-9414-b2743d3a5102
 InstanceOf: TwiinCoordinationTask
 Usage: #example
 Title: "Coordination Task: reselection step 1, A accepted"
-Description: "Step 1. The Coordination Task of candidate A after A accepted: code request-fulfillment, for empty, only the type of work in input (TA sections Multiple Fulfillers Pattern; Patient context and readability)."
+Description: "Step 1. The Coordination Task of candidate A after A accepted: code request-fulfillment, only the type of work in input (TA sections Multiple Fulfillers Pattern; Patient context and readability)."
 * identifier.system = "https://placer.example.org/task"
 * identifier.value = "30ebfbf0-5ef0-47ad-9074-c98ca310a5ce"
 * status = #accepted
@@ -93,7 +94,7 @@ Instance: e74fa5b7-7904-40f5-ba19-d1aed93134ba
 InstanceOf: TwiinCoordinationTask
 Usage: #example
 Title: "Coordination Task: reselection step 1, B accepted"
-Description: "Step 1. The Coordination Task of candidate B after B accepted: code request-fulfillment, for empty, only the type of work in input (TA sections Multiple Fulfillers Pattern; Patient context and readability)."
+Description: "Step 1. The Coordination Task of candidate B after B accepted: code request-fulfillment, only the type of work in input (TA sections Multiple Fulfillers Pattern; Patient context and readability)."
 * identifier.system = "https://placer.example.org/task"
 * identifier.value = "f49d7ad6-4e18-48b2-875f-3a97cdf119be"
 * status = #accepted
@@ -108,7 +109,7 @@ Instance: 18d1bd56-33f6-43e0-a3fa-8871a100df12
 InstanceOf: TwiinCoordinationTask
 Usage: #example
 Title: "Coordination Task: reselection step 2, A selected"
-Description: "Step 2. The Coordination Task of A when the Placer selects A: businessStatus selected, code fulfill and for set in the same update (TA sections Multiple Fulfillers Pattern; Patient context and readability). The Request has performer set to A."
+Description: "Step 2. The Coordination Task of A when the Placer selects A: businessStatus selected, code fulfill set in the same update (TA sections Multiple Fulfillers Pattern; Patient context and readability). The Request has performer set to A."
 * identifier.system = "https://placer.example.org/task"
 * identifier.value = "30ebfbf0-5ef0-47ad-9074-c98ca310a5ce"
 * insert ReselectionSelected
@@ -152,7 +153,7 @@ Instance: a5c02498-4399-4c8d-aa17-b17023396852
 InstanceOf: TwiinCoordinationTask
 Usage: #example
 Title: "Coordination Task: reselection step 4, B invited again"
-Description: "Step 4. A new Coordination Task for B on the same Request, after the earlier Task of B ended (TA sections Multiple Fulfillers Pattern; Handling the End of a Coordination Task). code request-fulfillment, for empty."
+Description: "Step 4. A new Coordination Task for B on the same Request, after the earlier Task of B ended (TA sections Multiple Fulfillers Pattern; Handling the End of a Coordination Task). code request-fulfillment."
 * identifier.system = "https://placer.example.org/task"
 * identifier.value = "3c4f69f2-1091-4d50-8747-319b5c876215"
 * status = #requested
@@ -165,7 +166,7 @@ Instance: d4f3456d-86b6-4429-b606-bf52a94ca749
 InstanceOf: TwiinCoordinationTask
 Usage: #example
 Title: "Coordination Task: reselection step 4, C invited"
-Description: "Step 4. A Coordination Task for the new candidate C on the same Request (TA sections Multiple Fulfillers Pattern; Patient context and readability). code request-fulfillment, for empty."
+Description: "Step 4. A Coordination Task for the new candidate C on the same Request (TA sections Multiple Fulfillers Pattern; Patient context and readability). code request-fulfillment."
 * identifier.system = "https://placer.example.org/task"
 * identifier.value = "0140e816-86e8-44f1-a91d-c04e72b49ed2"
 * status = #requested
@@ -179,7 +180,7 @@ Instance: 47ca5941-e107-4c70-bae9-bce09b69311d
 InstanceOf: TwiinCoordinationTask
 Usage: #example
 Title: "Coordination Task: reselection step 5, C selected"
-Description: "Step 5. The Coordination Task of C when the Placer selects C, after C accepted (TA section Multiple Fulfillers Pattern: the Placer selects only a candidate whose Task has status accepted). businessStatus selected, code fulfill and for set in the same update."
+Description: "Step 5. The Coordination Task of C when the Placer selects C, after C accepted (TA section Multiple Fulfillers Pattern: the Placer selects only a candidate whose Task has status accepted). businessStatus selected, code fulfill set in the same update."
 * identifier.system = "https://placer.example.org/task"
 * identifier.value = "0140e816-86e8-44f1-a91d-c04e72b49ed2"
 * insert ReselectionSelected

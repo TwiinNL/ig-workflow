@@ -8,7 +8,7 @@ A standard dataset, described by the Library of the ActivityDefinition or PlanDe
 
 | Step | What happens | Instances |
 |---|---|---|
-| 1 | The Placer creates the Coordination Task with code `fulfill`, `for` set and the available entries. `ServiceRequest.performer` refers to A; `priority` is populated. | [Request](ServiceRequest-c682d130-33be-4bd5-a2b5-6677aead5ad9.html), [created](Task-5fe23d95-5f8d-4f9d-9315-7d7979153e2a.html) |
+| 1 | The Placer creates the Coordination Task with code `fulfill`, `for` and the available entries. `ServiceRequest.performer` refers to A; `priority` is populated. | [Request](ServiceRequest-c682d130-33be-4bd5-a2b5-6677aead5ad9.html), [created](Task-5fe23d95-5f8d-4f9d-9315-7d7979153e2a.html) |
 | 2 | The Fulfiller accepts. | [accepted](Task-f99620ae-3d81-4e74-915e-c9dc12771355.html) |
 | 3 | The Fulfiller starts the work: `in-progress`, `executionPeriod.start`. | [in progress](Task-fcf2352b-4027-45ea-8cd3-002dbebc3d7a.html) |
 | 4 | The Fulfiller completes the work: `completed`, `executionPeriod.end`. | [completed](Task-7b4e4d93-be6d-4511-a2b0-0d141fa362e6.html) |
@@ -17,8 +17,8 @@ A standard dataset, described by the Library of the ActivityDefinition or PlanDe
 
 | Step | What happens | Instances |
 |---|---|---|
-| 1 | One Request, two candidates A and B, each with a Coordination Task with code `request-fulfillment` and `for` empty. Each candidate may read the Request from the creation of its Coordination Task; until selection the Placer keeps data that directly identifies the patient out of the Request. Both accept and record a bid in `output`. | [Request](ServiceRequest-7e83a049-2267-4ca0-9d35-07216dfec2b6.html), [A accepted](Task-12e3afcc-3979-476c-bc59-8e8e4e40afb9.html), [B accepted](Task-66bb48ed-2053-4fa4-ae26-4aba6ad37e5d.html) |
-| 2 | The Placer selects A: code `fulfill`, `businessStatus` `selected` and `for` in one update, with the available entries. From code `fulfill` on, A may read the Patient. The Task of B is cancelled with `statusReason` `not-selected`. | [A selected](Task-5932fe26-950a-481f-8fc3-fa792e1d318f.html), [B not selected](Task-4e1168c4-0d2d-434f-a44e-bd117d0780d2.html) |
+| 1 | One Request, two candidates A and B, each with a Coordination Task with code `request-fulfillment`; `for` is set at creation, as in every Coordination Task. Each candidate may read the Request from the creation of its Coordination Task; until selection the Placer keeps data that directly identifies the patient out of the Request. Both accept and record a bid in `output`. | [Request](ServiceRequest-7e83a049-2267-4ca0-9d35-07216dfec2b6.html), [A accepted](Task-12e3afcc-3979-476c-bc59-8e8e4e40afb9.html), [B accepted](Task-66bb48ed-2053-4fa4-ae26-4aba6ad37e5d.html) |
+| 2 | The Placer selects A: code `fulfill` and `businessStatus` `selected` in one update, with the available entries. From code `fulfill` on, A may read the Patient. The Task of B is cancelled with `statusReason` `not-selected`. | [A selected](Task-5932fe26-950a-481f-8fc3-fa792e1d318f.html), [B not selected](Task-4e1168c4-0d2d-434f-a44e-bd117d0780d2.html) |
 
 ### 3. Deselection and renewed solicitation
 

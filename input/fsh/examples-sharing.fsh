@@ -5,6 +5,7 @@
 
 RuleSet: SharingTaskBase
 * intent = #order
+* for = Reference(Patient/3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90)
 * focus = Reference(ServiceRequest/3e358483-ec50-469b-94d0-54b6bc5ea7d8)
 * authoredOn = "2026-10-20T09:00:00+02:00"
 * identifier.system = "https://placer.example.org/task"
@@ -102,7 +103,7 @@ Instance: 66507516-150c-415f-9e88-7c1f24eef69c
 InstanceOf: TwiinCoordinationTask
 Usage: #example
 Title: "Coordination Task: sharing step 5, available resource after selection"
-Description: "Step 5. The Placer selects the candidate: businessStatus selected, code fulfill and for set in the same update, together with an entry with type available-resource that refers to a resource at the Placer (TA sections Sharing additional content; Patient context and readability)."
+Description: "Step 5. The Placer selects the candidate: businessStatus selected, code fulfill set in the same update, together with an entry with type available-resource that refers to a resource at the Placer (TA sections Sharing additional content; Patient context and readability)."
 * status = #accepted
 * businessStatus = TAWorkflowCS#selected
 * code = $task-code#fulfill

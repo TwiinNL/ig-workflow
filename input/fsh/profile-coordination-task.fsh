@@ -15,6 +15,10 @@ Description: "Coordination Task under TA Workflow (TA sections Summary of the pr
 * businessStatus ^comment = "selected is reserved for the Placer (TA section Write access). A use case MAY define further codes."
 * focus only Reference(TwiinWorkflowServiceRequest)
 * authoredOn 1..1
+* for 1..1
+* for.reference 1..1
+* for ^short = "The Patient of the Request, set at creation"
+* for ^comment = "Set at creation, in every pattern, and refers by Reference.reference to the Patient that ServiceRequest.subject refers to. The selection does not set it. Read access to the Patient follows Task.code fulfill (TA section Patient context and readability)."
 * requester 1..1
 * requester.identifier 1..1
 * requester.identifier.system 1..1
@@ -60,8 +64,8 @@ Expression: "statusReason.coding.where(system = 'https://fhir.twiin.nl/ig/workfl
 Severity: #error
 
 Invariant: twiin-ct-3
-Description: "When businessStatus is selected, code is fulfill and for is populated (TA sections Multiple Fulfillers Pattern; Patient context and readability)."
-Expression: "businessStatus.coding.where(system = 'https://fhir.twiin.nl/ig/workflow/CodeSystem/ta-workflow' and code = 'selected').exists() implies (code.coding.where(system = 'http://hl7.org/fhir/CodeSystem/task-code' and code = 'fulfill').exists() and for.exists())"
+Description: "When businessStatus is selected, code is fulfill (TA section Multiple Fulfillers Pattern)."
+Expression: "businessStatus.coding.where(system = 'https://fhir.twiin.nl/ig/workflow/CodeSystem/ta-workflow' and code = 'selected').exists() implies (code.coding.where(system = 'http://hl7.org/fhir/CodeSystem/task-code' and code = 'fulfill').exists())"
 Severity: #error
 
 Invariant: twiin-ct-5
