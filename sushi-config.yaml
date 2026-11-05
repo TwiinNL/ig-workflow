@@ -41,6 +41,8 @@ pages:
     title: "Example: sharing additional content"
   requirements-not-in-artifacts.md:
     title: Requirements not expressed in artifacts
+  changes.md:
+    title: Changes
   installing-dependencies.md:
     title: Installing dependencies
 
@@ -51,3 +53,4 @@ menu:
   Not in artifacts: requirements-not-in-artifacts.html
   Dependencies: installing-dependencies.html
   Artifacts: artifacts.html
+  Changes: changes.html
