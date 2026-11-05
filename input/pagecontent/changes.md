@@ -17,6 +17,7 @@ Technical specification of TA Workflow 0.4. Changes since 0.3.0-draft:
 - Coordination Task: invariant `twiin-ct-8` (`statusReason` required when the status is rejected or failed); `twiin-ct-5` now covers the status cancelled only.
 - Template `twiin.base.template` 0.1.7 (was 0.1.6). `0.3.0-draft` is published unchanged and keeps its template.
 - Package lock: `hl7.terminology` 7.5.0; `hl7.fhir.uv.extensions.r4` pinned to 5.3.0, as TA Workflow names it as a base specification (see known-issues.md in the source repository).
+- Several HealthcareServices of the same Fulfiller may be candidates for the same Request; the rule of 0.3 (no two open Coordination Tasks of the same Fulfiller for the same Request while either has code `request-fulfillment`) is removed from [Requirements not expressed in artifacts](requirements-not-in-artifacts.html). The page no longer mentions an atomic update at selection: the Placer updates its own Tasks in a way it chooses, based on their current version.
 - Correction: the URA is identified with the system `http://fhir.nl/fhir/NamingSystem/ura` everywhere, also on the assigner of the identifiers of HealthcareService and Location (as GF Addressing does) and in the `owner-assigner` Subscription example. The examples and test fixtures used the OID `urn:oid:2.16.528.1.1007.3.3` for the assigner. Republished as 0.4.0-draft.
 
 ### 0.3.0-draft (2026-10-16)
