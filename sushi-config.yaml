@@ -4,7 +4,7 @@ name: TwiinWorkflow
 title: Twiin Workflow
 description: Technical specification of TA Workflow, part of the technical core of the Twiin Afsprakenstelsel.
 status: draft
-version: 0.3.0-draft
+version: 0.4.0-draft
 fhirVersion: 4.0.1
 publisher:
   name: Twiin
@@ -33,6 +33,8 @@ pages:
     title: Home
   artifacts-overview.md:
     title: Artifacts overview
+  example-scenarios.md:
+    title: Example scenarios
   example-reselection.md:
     title: "Example: reselection"
   example-sharing.md:
@@ -45,6 +47,7 @@ pages:
 menu:
   Home: index.html
   Overview: artifacts-overview.html
+  Examples: example-scenarios.html
   Not in artifacts: requirements-not-in-artifacts.html
   Dependencies: installing-dependencies.html
   Artifacts: artifacts.html
