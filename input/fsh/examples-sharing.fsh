@@ -32,7 +32,7 @@ Instance: 8d97c695-4ece-45fb-96e0-a216398978fa
 InstanceOf: Observation
 Usage: #example
 Title: "Observation: updated wound assessment"
-Description: "A resource at the Placer to which the Coordination Task refers after selection, in an entry with type supplemental-resource (TA section Sharing additional content). The content is fictitious."
+Description: "A resource at the Placer to which the Coordination Task refers after selection, in an entry with type available-resource (TA section Sharing additional content). The content is fictitious."
 * status = #final
 * code.text = "Wound assessment"
 * subject = Reference(Patient/3f6a2b8c-1d4e-4f7a-9b2c-5e8d1a7c4f90)
@@ -47,7 +47,7 @@ Instance: 7dc145b2-78c9-45db-ab56-267c664be4c3
 InstanceOf: TwiinCoordinationTask
 Usage: #example
 Title: "Coordination Task: sharing step 1, content shared before selection"
-Description: "Step 1. The Placer invites the candidate and adds an entry to input with its content inline, without a reference, since a candidate may not read resources at the Placer before selection. The entry does not identify the patient (TA sections Sharing additional content; Patient context and readability). The type Dressing type is fictitious: the use case defines the type and states why the content is not identifying."
+Description: "Step 1. The Placer invites the candidate and adds an entry to input with its content inline, without a reference, since before selection a candidate may read the Request but not the Patient or other resources at the Placer. The entry does not identify the patient (TA sections Sharing additional content; Patient context and readability). The type Dressing type is fictitious: the use case defines the type and states why the content is not identifying."
 * status = #requested
 * code = TAWorkflowCS#request-fulfillment
 * insert SharingTaskBase
@@ -101,8 +101,8 @@ Description: "Step 4. The candidate removes businessStatus and statusReason (TA 
 Instance: 66507516-150c-415f-9e88-7c1f24eef69c
 InstanceOf: TwiinCoordinationTask
 Usage: #example
-Title: "Coordination Task: sharing step 5, supplemental resource after selection"
-Description: "Step 5. The Placer selects the candidate: businessStatus selected, code fulfill and for set in the same update, together with an entry with type supplemental-resource that refers to a resource at the Placer (TA sections Sharing additional content; Patient context and readability)."
+Title: "Coordination Task: sharing step 5, available resource after selection"
+Description: "Step 5. The Placer selects the candidate: businessStatus selected, code fulfill and for set in the same update, together with an entry with type available-resource that refers to a resource at the Placer (TA sections Sharing additional content; Patient context and readability)."
 * status = #accepted
 * businessStatus = TAWorkflowCS#selected
 * code = $task-code#fulfill
@@ -111,6 +111,6 @@ Description: "Step 5. The Placer selects the candidate: businessStatus selected,
 * insert SharingDressingInput
 * input[2].type.text = "Dressing change interval"
 * input[2].valueString = "Every 3 days."
-* input[3].type = TAWorkflowCS#supplemental-resource
+* input[3].type = TAWorkflowCS#available-resource
 * input[3].valueReference = Reference(Observation/8d97c695-4ece-45fb-96e0-a216398978fa)
 * lastModified = "2026-10-22T11:00:00+02:00"
